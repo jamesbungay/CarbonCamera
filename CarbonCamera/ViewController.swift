@@ -17,9 +17,32 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
-        // MARK: Setup video captureSession
+        // Verify authorisation for video capture, and then set up captureSession:
+        if AVCaptureDevice.authorizationStatus(for: .video) == .authorized || AVCaptureDevice.authorizationStatus(for: .video) == .notDetermined {
+            self.setUpCaptureSession()
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        // If unauthorised for video capture, display an alert explaining why:
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+            case .denied: // The user has previously denied access.
+                showAlert(titleIn: "No camera access", msgIn: "Please allow camera access in settings for CarbonCamera to use this app.")
+                return
+            case .restricted: // The user can't grant access due to restrictions.
+                showAlert(titleIn: "No camera access", msgIn: "Your parental restrictions prevent you from using the camera. Camera access is needed to use this app.")
+                return
+            default:
+                return
+        }
+    }
+    
+    
+    // MARK: Function to setup video captureSession
+    
+    func setUpCaptureSession() {
         
         // Setup video input to captureSession:
         
@@ -57,7 +80,14 @@ class ViewController: UIViewController {
             self.captureSession.startRunning()
         }
     }
-
+    
+    
+    func showAlert(titleIn:String, msgIn:String) {
+        let alert = UIAlertController(title: titleIn, message: msgIn, preferredStyle: .alert)
+        let alertOkAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(alertOkAction)
+        present(alert, animated: true, completion: nil)
+    }
 
 }
 
