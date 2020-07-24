@@ -15,22 +15,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E3L-zd-Qbi" customClass="CameraPreviewView" customModule="CarbonCamera" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E3L-zd-Qbi" customClass="CameraPreviewView" customModule="CarbonCamera" customModuleProvider="target" propertyAccessControl="all">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kf8-1e-Zhk">
+                                <rect key="frame" x="324.5" y="765" width="20" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="lightbulb.slash" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                                </state>
+                                <connections>
+                                    <action selector="torchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xvJ-jB-vHg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="E3L-zd-Qbi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LeD-Ls-1pd"/>
                             <constraint firstAttribute="trailing" secondItem="E3L-zd-Qbi" secondAttribute="trailing" id="MfU-IN-lX7"/>
                             <constraint firstItem="E3L-zd-Qbi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="g70-cm-dZ8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kf8-1e-Zhk" secondAttribute="trailing" constant="70" id="rxv-4a-RQI"/>
                             <constraint firstAttribute="bottom" secondItem="E3L-zd-Qbi" secondAttribute="bottom" id="wjh-ZM-sst"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Kf8-1e-Zhk" secondAttribute="bottom" constant="70" id="xWF-1E-uxf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="cameraPreviewView" destination="E3L-zd-Qbi" id="945-yB-7hu"/>
+                        <outlet property="torchButton" destination="Kf8-1e-Zhk" id="fmr-s5-f09"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -38,4 +53,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="118.52678571428571"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="lightbulb.slash" catalog="system" width="116" height="128"/>
+    </resources>
 </document>

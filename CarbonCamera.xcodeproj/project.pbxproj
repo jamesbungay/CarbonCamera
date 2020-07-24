@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		13AC059824CB130400A78BE1 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC059724CB130400A78BE1 /* CameraPreviewView.swift */; };
+		13AC059C24CB781900A78BE1 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 13AC059B24CB781900A78BE1 /* Resnet50.mlmodel */; };
 		13D476FD24C8BD2B0068E026 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D476FC24C8BD2B0068E026 /* AppDelegate.swift */; };
 		13D476FF24C8BD2B0068E026 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D476FE24C8BD2B0068E026 /* SceneDelegate.swift */; };
 		13D4770124C8BD2B0068E026 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D4770024C8BD2B0068E026 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		13AC059724CB130400A78BE1 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+		13AC059B24CB781900A78BE1 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 		13D476F924C8BD2B0068E026 /* CarbonCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarbonCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13D476FC24C8BD2B0068E026 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13D476FE24C8BD2B0068E026 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				13D476FE24C8BD2B0068E026 /* SceneDelegate.swift */,
 				13D4770024C8BD2B0068E026 /* ViewController.swift */,
 				13AC059724CB130400A78BE1 /* CameraPreviewView.swift */,
+				13AC059B24CB781900A78BE1 /* Resnet50.mlmodel */,
 				13D4770224C8BD2B0068E026 /* Main.storyboard */,
 				13D4770524C8BD2C0068E026 /* Assets.xcassets */,
 				13D4770724C8BD2C0068E026 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13AC059C24CB781900A78BE1 /* Resnet50.mlmodel in Sources */,
 				13AC059824CB130400A78BE1 /* CameraPreviewView.swift in Sources */,
 				13D4770124C8BD2B0068E026 /* ViewController.swift in Sources */,
 				13D476FD24C8BD2B0068E026 /* AppDelegate.swift in Sources */,
@@ -296,6 +300,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jamesbungay.CarbonCamera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -315,6 +320,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jamesbungay.CarbonCamera;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
