@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
     @IBOutlet weak var cameraPreviewView: CameraPreviewView!
     
@@ -19,6 +19,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // Verify authorisation for video capture, and then set up captureSession:
+        
         if AVCaptureDevice.authorizationStatus(for: .video) == .authorized || AVCaptureDevice.authorizationStatus(for: .video) == .notDetermined {
             self.setUpCaptureSession()
         }
@@ -27,6 +28,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         // If unauthorised for video capture, display an alert explaining why:
+        
         switch AVCaptureDevice.authorizationStatus(for: .video) {
             case .denied: // The user has previously denied access.
                 showAlert(titleIn: "No camera access", msgIn: "Please allow camera access in settings for CarbonCamera to use this app.")
@@ -66,21 +68,35 @@ class ViewController: UIViewController {
             captureSession.sessionPreset = .high
         } else { return }
         
+        videoDataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "queue.serial.videoQueue"))
+        
         if captureSession.canAddOutput(videoDataOutput) {
             captureSession.addOutput(videoDataOutput)
         } else { return }
         
         // Setup preview for captureSession:
+        
         cameraPreviewView.videoPreviewLayer.session = captureSession
         cameraPreviewView.videoPreviewLayer.videoGravity = .resizeAspectFill  // Set video preview to fill the view
         
         captureSession.commitConfiguration()
-        let serialQueue = DispatchQueue(label: "com.queue.serial")
+        let serialQueue = DispatchQueue(label: "queue.serial.startCaptureSession")
         serialQueue.async {
             self.captureSession.startRunning()
         }
     }
     
+    
+    // MARK: CaptureSession Output Delegate Methods
+    
+    // Function called every time the camera captures a frame:
+    
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        print("Camera captured frame on ", Date())
+    }
+    
+    
+    // MARK: Miscellanous Functions
     
     func showAlert(titleIn:String, msgIn:String) {
         let alert = UIAlertController(title: titleIn, message: msgIn, preferredStyle: .alert)
