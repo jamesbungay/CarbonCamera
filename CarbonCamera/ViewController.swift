@@ -39,7 +39,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         if AVCaptureDevice.authorizationStatus(for: .video) == .authorized || AVCaptureDevice.authorizationStatus(for: .video) == .notDetermined {
             self.setUpCaptureSession()
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -59,7 +58,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     
-    // MARK: Function to setup video captureSession
+    // MARK: captureSession setup method
     
     func setUpCaptureSession() {
         
@@ -106,10 +105,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     
-    // MARK: Camera control button handler methods
+    // MARK: Torch toggle method
     
-    @IBAction func torchButtonTapped(_ sender: Any) {
-        
+    func toggleTorch() {
         guard let videoDevice = AVCaptureDevice.default(for: .video)
             else { return }
         
@@ -132,10 +130,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         
         videoDevice.unlockForConfiguration()  // Allow other apps to reconfigure video device.
+
     }
     
     
-    // MARK: CaptureSession Output Delegate Methods
+    // MARK: CaptureSession Continous Video Output Delegate Method
     
     // Function called every time the camera captures a frame:
     
@@ -170,6 +169,27 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     
+    // MARK: UIButton Action Handlers
+    
+    @IBAction func shutterButtonTouchUp(_ sender: Any) {
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = 10; self.shutterButton.alpha = 0; self.view.layoutIfNeeded() }, completion: nil)
+        infoPanelVisible = true
+    }
+    
+    
+    @IBAction func torchButtonTapped(_ sender: Any) {
+        toggleTorch()
+    }
+    
+    
+    @IBAction func infoPanelCloseButtonTouchUp(_ sender: Any) {
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = -400; self.shutterButton.alpha = 1; self.view.layoutIfNeeded() }, completion: nil)
+        infoPanelVisible = false
+    }
+    
+    
     // MARK: Miscellanous Functions
     
     func showAlert(titleIn:String, msgIn:String) {
@@ -177,21 +197,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let alertOkAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(alertOkAction)
         present(alert, animated: true, completion: nil)
-    }
-
-    @IBAction func shutterButtonTouchUp(_ sender: Any) {
-        
-        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = 10; self.view.layoutIfNeeded() }, completion: nil)
-        infoPanelVisible = true
-    }
-    
-    // TODO: set shutter button alpha to change
-    
-    
-    @IBAction func infoPanelCloseButtonTouchUp(_ sender: Any) {
-        
-        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = -400; self.view.layoutIfNeeded() }, completion: nil)
-        infoPanelVisible = false
     }
     
 }
