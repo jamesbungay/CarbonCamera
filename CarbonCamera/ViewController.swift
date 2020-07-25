@@ -20,6 +20,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
     @IBOutlet weak var cameraPreviewView: CameraPreviewView!
     @IBOutlet weak var torchButton: UIButton!
+    @IBOutlet weak var shutterButton: UIButton!
     @IBOutlet weak var classificationResultLabel: UILabel!
     @IBOutlet weak var infoPanelStackViewBottomConstraint: NSLayoutConstraint!
     
@@ -119,14 +120,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             do {
                 try videoDevice.lockForConfiguration()
                 videoDevice.torchMode = .on
-                torchButton.setBackgroundImage(UIImage(systemName: "lightbulb"), for: UIControl.State.normal)
+                torchButton.setImage(UIImage(systemName: "lightbulb"), for: UIControl.State.normal)
             } catch { return }  // Video device could not be reconfigured to turn on torch.
             
         } else {  // Turn off torch and configure button to show this:
             do {
                 try videoDevice.lockForConfiguration()
                 videoDevice.torchMode = .off
-                torchButton.setBackgroundImage(UIImage(systemName: "lightbulb.slash"), for: UIControl.State.normal)
+                torchButton.setImage(UIImage(systemName: "lightbulb.slash"), for: UIControl.State.normal)
             } catch { return }  // Video device could not be reconfigured to turn off torch.
         }
         
@@ -184,9 +185,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         infoPanelVisible = true
     }
     
+    // TODO: set shutter button alpha to change
+    
+    
     @IBAction func infoPanelCloseButtonTouchUp(_ sender: Any) {
         
-        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = -350; self.view.layoutIfNeeded() }, completion: nil)
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = -400; self.view.layoutIfNeeded() }, completion: nil)
         infoPanelVisible = false
     }
     
