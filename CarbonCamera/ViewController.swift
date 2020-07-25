@@ -13,22 +13,29 @@ import Vision  // Vision module of CoreML
 
 // TODO: Reset torch button image when app comes back into view after being suspended
 
-// TODO: Only classify image once a second or so, rather than every frame, for power consumption purposes
-
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
     @IBOutlet weak var cameraPreviewView: CameraPreviewView!
+    
     @IBOutlet weak var torchButton: UIButton!
     @IBOutlet weak var shutterButton: UIButton!
+    
+    // TODO: add outlet for suggestion buttons and food info labels
+    
     @IBOutlet weak var classificationResultLabel: UILabel!
+    
     @IBOutlet weak var infoPanelStackViewBottomConstraint: NSLayoutConstraint!
+    
     
     var deviceHasTorch: Bool = false
     
     let captureSession = AVCaptureSession()
     
     var infoPanelVisible = true
+    
+    var videoFrameNeedsToBeProcessed = false  // Toggled true when shutter button pressed
+    var readyToCaptureAndProcessImage = true  // Toggled true when no image is currently being pressed and info panel is not visible
     
     
     override func viewDidLoad() {
@@ -62,7 +69,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     func setUpCaptureSession() {
         
-        // Setup video input to captureSession:
+        // Setup camera input to captureSession:
         
         captureSession.beginConfiguration()
         
@@ -78,7 +85,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             captureSession.addInput(videoDeviceInput)
         } else { return }  // Configuration failed, cannot add input to captureSession.
         
-        // Setup video output from captureSession:
+        
+        // Setup continuous video output from captureSession:
         
         let videoDataOutput = AVCaptureVideoDataOutput()  // Continuous video data output
         
@@ -91,6 +99,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         if captureSession.canAddOutput(videoDataOutput) {
             captureSession.addOutput(videoDataOutput)
         } else { return }
+        
         
         // Setup preview for captureSession:
         
@@ -134,11 +143,30 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     
+    
+    
+    
+    
+    
+    
+    
     // MARK: CaptureSession Continous Video Output Delegate Method
     
     // Function called every time the camera captures a frame:
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        
+        if !videoFrameNeedsToBeProcessed { return }
+        videoFrameNeedsToBeProcessed = false  // A frame of video is now being handled in response to the shutter button being pressed, so no longer need to process another hense this boolean is set
+        
+        guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
+            else { return }
+        
+        classifyImageAndPassResultsToHandler(imageBufferIn: imageBuffer)
+    }
+    
+    
+    func classifyImageAndPassResultsToHandler(imageBufferIn: CVImageBuffer) {
         
         // Set up CoreML vision model, request and handler method:
         
@@ -151,6 +179,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             guard let results = completedClassificationRequest.results as? [VNClassificationObservation]
                 else { return }
             
+            self.handleResultsOfClassification(results: results)
+            
+            //TODO: remove
             // Display result of classification in UI; do work on main thread
             DispatchQueue.main.async {
                 self.classificationResultLabel.text = String(results[0].identifier + " -- " + String(results[0].confidence))
@@ -158,23 +189,74 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             }
         })
         
-        guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
-            else { return }
-        
         let bgQueue = DispatchQueue(label: "queue.serial.classificationRequestHandler")
         bgQueue.async {
-            let requestHandler = VNImageRequestHandler(cvPixelBuffer: imageBuffer, options: [:])
+            let requestHandler = VNImageRequestHandler(cvPixelBuffer: imageBufferIn, options: [:])
             try? requestHandler.perform([classificationRequest])
         }
     }
+    
+    
+    func handleResultsOfClassification(results: [VNClassificationObservation]) {
+        
+        // Get foodIDs of top 6 classification results that are foods, still working off main queue/thread to prevent the UI from hanging:
+        
+        // TODO: UNCOMMENT WHEN FOOD DATASET IS ADDED TO PROJECT
+//        var top6FoodIDs: [Int] = []
+//        var foodIDsLeftToObtain = 6
+//        var count = 0
+//        while foodIDsLeftToObtain > 0 {
+//            let returnedFoodID = getFoodIDOf(classificationIdentifier: results[count].identifier)
+//            if returnedFoodID != -1 {
+//                top6FoodIDs.append(returnedFoodID)
+//                foodIDsLeftToObtain -= 1
+//            }
+//            count += 1
+//        }
+        
+        // Make UI changes on main thread to display results such as C02e and suggested foods:
+        
+        DispatchQueue.main.async {
+            
+            // TODO: UNCOMMENT WHEN FOOD DATASET IS ADDED TO PROJECT
+//            self.setUpFoodInfoView(foodID: top6FoodIDs[0])
+//            self.setUpFoodSuggestionsView(foodID: Array(top6FoodIDs.dropFirst(1)))
+            
+            // Display info panel on screen:
+            UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = 10; self.shutterButton.alpha = 0; self.view.layoutIfNeeded() }, completion: nil)
+            self.infoPanelVisible = true
+        }
+    }
+    
+    
+    func getFoodIDOf(classificationIdentifier: String) -> Int {  // Returns -1 if input classificationIdenfitier was not in food-info-datafile
+        
+        // TODO: Retrieve FoodID of input identifier
+        return -1
+    }
+    
+    func setUpFoodInfoView(foodID: Int) {
+        // TODO: Retrieve and display CO2e info for top result
+    }
+    
+    func setUpFoodSuggestionsView(foodID: [Int]) {
+        // TODO: make this, set buttons to other foods
+    }
+    
+    
+    
+    
     
     
     // MARK: UIButton Action Handlers
     
     @IBAction func shutterButtonTouchUp(_ sender: Any) {
         
-        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = 10; self.shutterButton.alpha = 0; self.view.layoutIfNeeded() }, completion: nil)
-        infoPanelVisible = true
+        if !self.readyToCaptureAndProcessImage { return }
+        self.readyToCaptureAndProcessImage = false
+        
+        // Set boolean so that next captured frame will be processed for object classification
+        self.videoFrameNeedsToBeProcessed = true
     }
     
     
@@ -187,6 +269,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = -400; self.shutterButton.alpha = 1; self.view.layoutIfNeeded() }, completion: nil)
         infoPanelVisible = false
+        
+        readyToCaptureAndProcessImage = true
     }
     
     
