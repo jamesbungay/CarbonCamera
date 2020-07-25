@@ -20,31 +20,142 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kf8-1e-Zhk">
-                                <rect key="frame" x="324.5" y="765" width="20" height="27"/>
+                                <rect key="frame" x="354" y="62.5" width="40" height="41.5"/>
+                                <color key="backgroundColor" red="0.71026332489999999" green="0.30332399189999998" blue="0.63168447490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="HSq-AW-O65"/>
+                                    <constraint firstAttribute="height" constant="40" id="qol-Qv-oTL"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" backgroundImage="lightbulb.slash" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="torchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xvJ-jB-vHg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1LT-zQ-YH3" userLabel="Shutter Button">
+                                <rect key="frame" x="334" y="124" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.71026332489999999" green="0.30332399189999998" blue="0.63168447490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="36A-Sm-5Pv"/>
+                                    <constraint firstAttribute="height" constant="60" id="54e-YS-xp0"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="circle" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="shutterButtonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ybm-dK-FiM"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Classification Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Aq-Ob-6e2">
+                                <rect key="frame" x="50" y="54" width="314" height="21.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JIw-xf-5a9" userLabel="Info Panel Stack View">
+                                <rect key="frame" x="10" y="532" width="394" height="320"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ioN-Ty-YDw" userLabel="Info Panel Close Button">
+                                        <rect key="frame" x="177" y="0.0" width="40" height="40"/>
+                                        <color key="backgroundColor" red="0.71026332489999999" green="0.30332399189999998" blue="0.63168447490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="JjJ-cV-5MW"/>
+                                            <constraint firstAttribute="width" constant="40" id="ixe-HS-sks"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="xmark" catalog="system">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="infoPanelCloseButtonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xgw-0r-W7q"/>
+                                        </connections>
+                                    </button>
+                                    <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gwV-dN-Kjg" userLabel="Food Info View">
+                                        <rect key="frame" x="0.0" y="50" width="394" height="200"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Granny Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQq-hx-uee">
+                                                <rect key="frame" x="15" y="15" width="220" height="41"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="34"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="QQq-hx-uee" firstAttribute="leading" secondItem="gwV-dN-Kjg" secondAttribute="leading" constant="15" id="21I-vQ-SX0"/>
+                                            <constraint firstAttribute="height" constant="200" id="3D2-v3-buH"/>
+                                            <constraint firstItem="QQq-hx-uee" firstAttribute="top" secondItem="gwV-dN-Kjg" secondAttribute="top" constant="15" id="tcS-yw-9hW"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8CU-b4-CDF" userLabel="Suggestion Buttons View">
+                                        <rect key="frame" x="0.0" y="260" width="394" height="60"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="CsI-DV-8Pb"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="8CU-b4-CDF" firstAttribute="leading" secondItem="JIw-xf-5a9" secondAttribute="leading" id="2Eo-PN-51S"/>
+                                    <constraint firstAttribute="trailing" secondItem="8CU-b4-CDF" secondAttribute="trailing" id="33k-wB-8xd"/>
+                                    <constraint firstAttribute="trailing" secondItem="gwV-dN-Kjg" secondAttribute="trailing" id="8P4-jh-kPW"/>
+                                    <constraint firstItem="gwV-dN-Kjg" firstAttribute="leading" secondItem="JIw-xf-5a9" secondAttribute="leading" id="f0p-fA-Deh"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="1Aq-Ob-6e2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="IIB-Zb-EhN"/>
                             <constraint firstItem="E3L-zd-Qbi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LeD-Ls-1pd"/>
                             <constraint firstAttribute="trailing" secondItem="E3L-zd-Qbi" secondAttribute="trailing" id="MfU-IN-lX7"/>
+                            <constraint firstItem="JIw-xf-5a9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Rna-Ye-iYM"/>
+                            <constraint firstItem="1Aq-Ob-6e2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Tsf-cx-V6K"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JIw-xf-5a9" secondAttribute="bottom" constant="10" id="UhC-Ok-AfP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1Aq-Ob-6e2" secondAttribute="trailing" constant="50" id="fCe-JP-ipl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JIw-xf-5a9" secondAttribute="trailing" constant="10" id="fub-E2-LCs"/>
                             <constraint firstItem="E3L-zd-Qbi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="g70-cm-dZ8"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kf8-1e-Zhk" secondAttribute="trailing" constant="70" id="rxv-4a-RQI"/>
+                            <constraint firstItem="1LT-zQ-YH3" firstAttribute="top" secondItem="Kf8-1e-Zhk" secondAttribute="bottom" constant="20" id="prg-gL-Qc3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kf8-1e-Zhk" secondAttribute="trailing" constant="20" id="rxv-4a-RQI"/>
                             <constraint firstAttribute="bottom" secondItem="E3L-zd-Qbi" secondAttribute="bottom" id="wjh-ZM-sst"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Kf8-1e-Zhk" secondAttribute="bottom" constant="70" id="xWF-1E-uxf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="Kf8-1e-Zhk" secondAttribute="top" constant="-20" id="xWF-1E-uxf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1LT-zQ-YH3" secondAttribute="trailing" constant="20" id="xXb-bO-fPh"/>
+                            <constraint firstItem="1Aq-Ob-6e2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="xjv-nI-NoX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="cameraPreviewView" destination="E3L-zd-Qbi" id="945-yB-7hu"/>
+                        <outlet property="classificationResultLabel" destination="1Aq-Ob-6e2" id="yxt-lE-fWJ"/>
+                        <outlet property="infoPanelStackViewBottomConstraint" destination="UhC-Ok-AfP" id="22E-A9-VUn"/>
                         <outlet property="torchButton" destination="Kf8-1e-Zhk" id="fmr-s5-f09"/>
                     </connections>
                 </viewController>
@@ -54,6 +165,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="circle" catalog="system" width="128" height="121"/>
         <image name="lightbulb.slash" catalog="system" width="116" height="128"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
     </resources>
 </document>

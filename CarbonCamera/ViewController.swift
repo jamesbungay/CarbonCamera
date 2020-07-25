@@ -13,15 +13,21 @@ import Vision  // Vision module of CoreML
 
 // TODO: Reset torch button image when app comes back into view after being suspended
 
+// TODO: Only classify image once a second or so, rather than every frame, for power consumption purposes
+
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
     @IBOutlet weak var cameraPreviewView: CameraPreviewView!
     @IBOutlet weak var torchButton: UIButton!
+    @IBOutlet weak var classificationResultLabel: UILabel!
+    @IBOutlet weak var infoPanelStackViewBottomConstraint: NSLayoutConstraint!
     
     var deviceHasTorch: Bool = false
     
     let captureSession = AVCaptureSession()
+    
+    var infoPanelVisible = true
     
     
     override func viewDidLoad() {
@@ -142,10 +148,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let classificationRequest = VNCoreMLRequest(model: visionModel, completionHandler: {
             completedClassificationRequest, err in
 
-            guard let firstObservation = completedClassificationRequest.results?.first as? VNClassificationObservation
-                else { return }  // No results of classification
+            guard let results = completedClassificationRequest.results as? [VNClassificationObservation]
+                else { return }
             
-            print(firstObservation.identifier, " -- ", firstObservation.confidence)
+            // Display result of classification in UI; do work on main thread
+            DispatchQueue.main.async {
+                self.classificationResultLabel.text = String(results[0].identifier + " -- " + String(results[0].confidence))
+                self.classificationResultLabel.text! += String("\n" + results[1].identifier + " -- " + String(results[1].confidence))
+            }
         })
         
         guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
@@ -168,5 +178,17 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         present(alert, animated: true, completion: nil)
     }
 
+    @IBAction func shutterButtonTouchUp(_ sender: Any) {
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = 10; self.view.layoutIfNeeded() }, completion: nil)
+        infoPanelVisible = true
+    }
+    
+    @IBAction func infoPanelCloseButtonTouchUp(_ sender: Any) {
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = -350; self.view.layoutIfNeeded() }, completion: nil)
+        infoPanelVisible = false
+    }
+    
 }
 
