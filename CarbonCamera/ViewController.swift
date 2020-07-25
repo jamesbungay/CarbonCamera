@@ -28,6 +28,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var infoPanelStackViewBottomConstraint: NSLayoutConstraint!
     
     
+    let foodDataModel = FoodDataModel()
+    
     var deviceHasTorch: Bool = false
     
     let captureSession = AVCaptureSession()
@@ -65,7 +67,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     
-    // MARK: captureSession setup method
+    // MARK: captureSession Setup
     
     func setUpCaptureSession() {
         
@@ -114,7 +116,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     
-    // MARK: Torch toggle method
+    // MARK: Torch Toggle Method
     
     func toggleTorch() {
         guard let videoDevice = AVCaptureDevice.default(for: .video)
@@ -143,14 +145,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    // MARK: CaptureSession Continous Video Output Delegate Method
+    // MARK: CaptureSession Continous-Video-Output Delegate Method
     
     // Function called every time the camera captures a frame:
     
@@ -165,6 +160,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         classifyImageAndPassResultsToHandler(imageBufferIn: imageBuffer)
     }
     
+    
+    // MARK: Image Classification and Result Handling
     
     func classifyImageAndPassResultsToHandler(imageBufferIn: CVImageBuffer) {
         
@@ -206,7 +203,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 //        var foodIDsLeftToObtain = 6
 //        var count = 0
 //        while foodIDsLeftToObtain > 0 {
-//            let returnedFoodID = getFoodIDOf(classificationIdentifier: results[count].identifier)
+//            let returnedFoodID = foodDataModel.getFoodIDOf(classificationIdentifier: results[count].identifier)
 //            if returnedFoodID != -1 {
 //                top6FoodIDs.append(returnedFoodID)
 //                foodIDsLeftToObtain -= 1
@@ -219,8 +216,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         DispatchQueue.main.async {
             
             // TODO: UNCOMMENT WHEN FOOD DATASET IS ADDED TO PROJECT
-//            self.setUpFoodInfoView(foodID: top6FoodIDs[0])
-//            self.setUpFoodSuggestionsView(foodID: Array(top6FoodIDs.dropFirst(1)))
+//            foodDataModel.setUpFoodInfoView(foodID: top6FoodIDs[0])
+//            foodDataModel.setUpFoodSuggestionsView(foodID: Array(top6FoodIDs.dropFirst(1)))
             
             // Display info panel on screen:
             UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = 10; self.shutterButton.alpha = 0; self.view.layoutIfNeeded() }, completion: nil)
@@ -229,23 +226,16 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     
-    func getFoodIDOf(classificationIdentifier: String) -> Int {  // Returns -1 if input classificationIdenfitier was not in food-info-datafile
-        
-        // TODO: Retrieve FoodID of input identifier
-        return -1
-    }
+    // MARK: Info View Config Methods
     
     func setUpFoodInfoView(foodID: Int) {
         // TODO: Retrieve and display CO2e info for top result
     }
     
+    
     func setUpFoodSuggestionsView(foodID: [Int]) {
         // TODO: make this, set buttons to other foods
     }
-    
-    
-    
-    
     
     
     // MARK: UIButton Action Handlers
