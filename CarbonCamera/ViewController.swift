@@ -239,7 +239,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let portionSize = foodDataModel.getPortionSizeValueFromFoodID(foodID: foodID) ?? 1
         var co2ePerPortionCalc = Double(co2ePerKg) ?? 1
         co2ePerPortionCalc *= portionSize
-        let co2ePerPortion = String(format: "%.1f", co2ePerPortionCalc)
+        var co2ePerPortion = String(format: "%.1f", co2ePerPortionCalc)
+        if co2ePerPortion == "0.0" {
+            co2ePerPortion = "<0.1"
+        }
         
         foodInfoTitleLabel.text = title
         foodInfoCO2ePerKgLabel.text = co2ePerKg

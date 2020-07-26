@@ -3,14 +3,32 @@ foodID,name,portionsize_string,portionsize_value_kg,co2e_kg_per_kg,resnet50class
 1,Red Wine,750ml bottle,0.75,1.4,red wine,https://ourworldindata.org/food-choice-vs-eating-local
 2,Bottle of Beer,330ml bottle,0.33,1.7,beer bottle,http://www.avnir.org/documentation/book/LCAconf_munoz2_2012_en.pdf
 3,Pint of Beer,1 pint,0.57,1.7,beer glass,
-4,Apple,1 large apple,0.2,0.4,,https://ourworldindata.org/food-choice-vs-eating-local
-5,Banana,1 banana,0.15,0.8,banana,https://ourworldindata.org/food-choice-vs-eating-local
-6,Pineapple,1 large slice,0.15,11.1,pineapple; ananas,https://books.google.co.uk/books?id=Gp-4LlAkbqsC&pg=PA36&lpg=PA36&dq=pineapple+co2e&source=bl&ots=Ay0ez9lpGE&sig=ACfU3U22LhYw92qhBqQ_G4B7fhxMSp7TAA&hl=en&sa=X&ved=2ahUKEwiQ_L_Tj-vqAhV2QkEAHa_TBAUQ6AEwAHoECAoQAQ#v=onepage&q=pineapple%20co2e&f=false
-7,Orange,1 orange,0.1,0.3,orange,https://saiplatform.org/uploads/Library/WG%20Fruit%20-%20ART%20Final%20Report.pdf
-8,Lemon,1 lemon,0.1,0.3,lemon,https://ourworldindata.org/food-choice-vs-eating-local
-9,Strawberries,100g portion,0.1,2.0,strawberry,"https://saiplatform.org/uploads/Library/WG%20Fruit%20-%20ART%20Final%20Report.pdf, https://www.researchgate.net/figure/Greenhouse-gas-emissions-per-1-kg-of-strawberries_fig2_301270042"
-10,Cucumber,1 cucumber,0.3,0.23,"cucumber, cuke",https://core.ac.uk/download/pdf/76958641.pdf
-11,Poultry Meat,250g portion,0.25,6.1,butcher shop; meat market,https://ourworldindata.org/food-choice-vs-eating-local
-12,Pork Meat,250g portion,0.25,7.2,butcher shop; meat market,https://ourworldindata.org/food-choice-vs-eating-local
-13,Lamb Meat,250g portion,0.25,24.5,butcher shop; meat market,https://ourworldindata.org/food-choice-vs-eating-local
-14,Beef Meat,250g portion,0.25,59.6,butcher shop; meat market,https://ourworldindata.org/food-choice-vs-eating-local
+4,Bottle of Soda,330ml bottle,0.33,1.1,pop bottle; soda bottle,https://www.greenerpackage.com/metrics_standards/coke%E2%80%99s_carbon_footprints_are_revealed
+5,Pot of Coffee,3 cups,0.03,16.5,coffeepot,https://ourworldindata.org/food-choice-vs-eating-local
+6,Cup of Coffee,1 cup,0.01,16.5,coffee mug,https://ourworldindata.org/food-choice-vs-eating-local
+7,Espresso,single 7g shot,0.007,16.5,espresso,https://ourworldindata.org/food-choice-vs-eating-local
+8,Cup of Tea,1 teabag,0.002,26.5,teapot,https://steenbergs.co.uk/blog/whats-the-carbon-footprint-of-your-cuppa
+9,Baguette,400g baguette,0.4,1.4,French loaf,https://ourworldindata.org/food-choice-vs-eating-local
+10,Pretzel,1 pretzel,0.1,1.4,pretzel,https://ourworldindata.org/food-choice-vs-eating-local
+11,Bagel,1 bagel,0.1,1.4,bagel; beigel,https://ourworldindata.org/food-choice-vs-eating-local
+12,Apple,1 large apple,0.2,0.4,Granny Smith,https://ourworldindata.org/food-choice-vs-eating-local
+13,Banana,1 banana,0.15,0.8,banana,https://ourworldindata.org/food-choice-vs-eating-local
+14,Pineapple,1 large slice,0.15,11.1,pineapple; ananas,https://books.google.co.uk/books?id=Gp-4LlAkbqsC&pg=PA36&lpg=PA36&dq=pineapple+co2e&source=bl&ots=Ay0ez9lpGE&sig=ACfU3U22LhYw92qhBqQ_G4B7fhxMSp7TAA&hl=en&sa=X&ved=2ahUKEwiQ_L_Tj-vqAhV2QkEAHa_TBAUQ6AEwAHoECAoQAQ#v=onepage&q=pineapple%20co2e&f=false
+15,Orange,1 orange,0.1,0.3,orange,https://saiplatform.org/uploads/Library/WG%20Fruit%20-%20ART%20Final%20Report.pdf
+16,Lemon,1 lemon,0.1,0.3,lemon,https://ourworldindata.org/food-choice-vs-eating-local
+17,Fig,1 fig,0.04,0.5,fig,https://core.ac.uk/download/pdf/76958641.pdf
+18,Strawberries,100g portion,0.1,1.7,strawberry,https://saiplatform.org/uploads/Library/WG%20Fruit%20-%20ART%20Final%20Report.pdf; https://www.researchgate.net/figure/Greenhouse-gas-emissions-per-1-kg-of-strawberries_fig2_301270042; https://core.ac.uk/download/pdf/76958641.pdf
+19,Cucumber,1 cucumber,0.3,0.23,cucumber; cuke,https://core.ac.uk/download/pdf/76958641.pdf
+20,Courgette,1 courgette,0.2,0.2,zucchini; courgette,https://core.ac.uk/download/pdf/76958641.pdf
+21,Bell Pepper,1 bell pepper,0.15,1.1,bell pepper,https://core.ac.uk/download/pdf/76958641.pdf
+22,Pomegranate,150g portion,0.15,1.3,pomegranate,
+23,Lettuce / Cabbage,1 lettuce,0.5,0.4,head cabbage,https://core.ac.uk/download/pdf/76958641.pdf
+24,Cauliflower,1 cauliflower,0.5,0.4,cauliflower,https://core.ac.uk/download/pdf/76958641.pdf
+25,Mashed Potato,300g portion,0.3,0.3,mashed potato,https://ourworldindata.org/food-choice-vs-eating-local
+26,Mushroom,150g portion,0.15,0.27,mushroom,https://core.ac.uk/download/pdf/76958641.pdf
+27,Ice Lolly,1 lolly,0.1,2.8,ice lolly; lolly; lollipop; popsicle,
+28,Pizza,400g pizza,0.4,3.5,pizza; pizza pie,https://faseb.onlinelibrary.wiley.com/doi/abs/10.1096/fasebj.31.1_supplement.lb386
+29,Poultry Meat,250g portion,0.25,6.1,butcher shop; meat market,https://ourworldindata.org/food-choice-vs-eating-local
+30,Pork Meat,250g portion,0.25,7.2,butcher shop; meat market,https://ourworldindata.org/food-choice-vs-eating-local
+31,Lamb Meat,250g portion,0.25,24.5,butcher shop; meat market,https://ourworldindata.org/food-choice-vs-eating-local
+32,Beef Meat,250g portion,0.25,59.6,butcher shop; meat market,https://ourworldindata.org/food-choice-vs-eating-local
