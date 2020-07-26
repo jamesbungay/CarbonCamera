@@ -103,14 +103,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kg CO2e emitted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bN-ax-s8B">
-                                                <rect key="frame" x="94.5" y="79" width="250.5" height="40.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kg CO2e per kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bN-ax-s8B">
+                                                <rect key="frame" x="94.5" y="79" width="234" height="40.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="34"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="litres water used" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sM-h0-Ew9">
-                                                <rect key="frame" x="94.5" y="144" width="239" height="40.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kg CO2e per port" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sM-h0-Ew9">
+                                                <rect key="frame" x="94.5" y="144" width="257.5" height="40.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="34"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -188,6 +188,9 @@
                     <connections>
                         <outlet property="cameraPreviewView" destination="E3L-zd-Qbi" id="945-yB-7hu"/>
                         <outlet property="classificationResultLabel" destination="1Aq-Ob-6e2" id="yxt-lE-fWJ"/>
+                        <outlet property="foodInfoCO2ePerKgLabel" destination="Z1X-59-qT0" id="viC-vz-bxI"/>
+                        <outlet property="foodInfoCO2ePerPortionLabel" destination="QJm-Vg-iZt" id="RAu-A0-EB6"/>
+                        <outlet property="foodInfoTitleLabel" destination="QQq-hx-uee" id="UKx-ll-jAY"/>
                         <outlet property="infoPanelStackViewBottomConstraint" destination="UhC-Ok-AfP" id="22E-A9-VUn"/>
                         <outlet property="shutterButton" destination="1LT-zQ-YH3" id="fJT-zh-LHQ"/>
                         <outlet property="torchButton" destination="Kf8-1e-Zhk" id="fmr-s5-f09"/>

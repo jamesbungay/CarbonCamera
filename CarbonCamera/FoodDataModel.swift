@@ -43,11 +43,12 @@ class FoodDataModel {
         var csvAsArray: [[String]] = []
         let rows = csvContents.components(separatedBy: "\n")
         for row in rows {
-            let columns = row.components(separatedBy: ";")
+            let columns = row.components(separatedBy: ",")
             csvAsArray.append(columns)
         }
         
-        csvAsArray = Array(csvAsArray.dropFirst(1))
+        csvAsArray = Array(csvAsArray.dropFirst(1))  // Drop column names
+        csvAsArray = Array(csvAsArray.dropLast(1))  // Drop empty final line of csv
         
         return csvAsArray
     }
@@ -57,8 +58,10 @@ class FoodDataModel {
     
     func getFoodIDOf(classificationIdentifier: String) -> Int? {  // Returns nil if input classificationIdenfitier was not in food-info-datafile
         
+        let classificationIdentifierCommaReplaced = classificationIdentifier.replacingOccurrences(of: ",", with: ";")
+        
         for food in self.dataSet {
-            if food[5] == classificationIdentifier {
+            if food[5] == classificationIdentifierCommaReplaced {
                 guard let foodIDOut = Int(food[0])
                     else { return nil }
                 return foodIDOut
@@ -79,7 +82,7 @@ class FoodDataModel {
         return nil
     }
     
-    func getPortionSizeFromFoodID(foodID: Int) -> String? {
+    func getPortionSizeTextFromFoodID(foodID: Int) -> String? {
         
         for food in self.dataSet {
             if food[0] == String(foodID) {
@@ -90,18 +93,20 @@ class FoodDataModel {
         return nil
     }
     
-    func getCO2eFromFoodID(foodID: Int) -> String? {
+    func getPortionSizeValueFromFoodID(foodID: Int) -> Double? {
         
         for food in self.dataSet {
             if food[0] == String(foodID) {
-                return food[3]
+                guard let portionSizeValueOut = Double(food[3])
+                    else { return nil }
+                return portionSizeValueOut
             }
         }
         
-        return "0"
+        return nil
     }
     
-    func getWaterUseFromFoodID(foodID: Int) -> String? {
+    func getCO2eFromFoodID(foodID: Int) -> String? {
         
         for food in self.dataSet {
             if food[0] == String(foodID) {

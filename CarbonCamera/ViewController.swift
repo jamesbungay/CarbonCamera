@@ -22,6 +22,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var shutterButton: UIButton!
     
     // TODO: add outlet for suggestion buttons and food info labels
+    @IBOutlet weak var foodInfoTitleLabel: UILabel!
+    @IBOutlet weak var foodInfoCO2ePerKgLabel: UILabel!
+    @IBOutlet weak var foodInfoCO2ePerPortionLabel: UILabel!
+    
     
     @IBOutlet weak var classificationResultLabel: UILabel!
     
@@ -201,26 +205,23 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         // Get foodIDs of top 6 classification results that are foods, still working off main queue/thread to prevent the UI from hanging:
         
-        // TODO: UNCOMMENT WHEN FOOD DATASET IS ADDED TO PROJECT
-//        var top6FoodIDs: [Int] = []
-//        var foodIDsLeftToObtain = 6
-//        var count = 0
-//        while foodIDsLeftToObtain > 0 {
-//            let returnedFoodID = foodDataModel.getFoodIDOf(classificationIdentifier: results[count].identifier)
-//            if returnedFoodID != -1 {
-//                top6FoodIDs.append(returnedFoodID)
-//                foodIDsLeftToObtain -= 1
-//            }
-//            count += 1
-//        }
+        var top6FoodIDs: [Int] = []
+        var foodIDsLeftToObtain = 6
+        var count = 0
+        while foodIDsLeftToObtain > 0 {
+            guard let returnedFoodID = foodDataModel.getFoodIDOf(classificationIdentifier: results[count].identifier)
+                else { count += 1; continue }
+            top6FoodIDs.append(returnedFoodID)
+            foodIDsLeftToObtain -= 1
+            count += 1
+        }
         
         // Make UI changes on main thread to display results such as C02e and suggested foods:
         
         DispatchQueue.main.async {
             
-            // TODO: UNCOMMENT WHEN FOOD DATASET IS ADDED TO PROJECT
-//            foodDataModel.setUpFoodInfoView(foodID: top6FoodIDs[0])
-//            foodDataModel.setUpFoodSuggestionsView(foodID: Array(top6FoodIDs.dropFirst(1)))
+            self.setUpFoodInfoView(foodID: top6FoodIDs[0])
+            self.setUpFoodSuggestionsView(foodID: Array(top6FoodIDs.dropFirst(1)))
             
             // Display info panel on screen:
             UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = 10; self.shutterButton.alpha = 0; self.view.layoutIfNeeded() }, completion: nil)
@@ -232,7 +233,17 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     // MARK: Info View Config Methods
     
     func setUpFoodInfoView(foodID: Int) {
-        // TODO: Retrieve and display CO2e info for top result
+        
+        let title = foodDataModel.getNameFromFoodID(foodID: foodID) ?? "Unknown Food"
+        let co2ePerKg = foodDataModel.getCO2eFromFoodID(foodID: foodID) ?? "1"
+        let portionSize = foodDataModel.getPortionSizeValueFromFoodID(foodID: foodID) ?? 1
+        var co2ePerPortionCalc = Double(co2ePerKg) ?? 1
+        co2ePerPortionCalc *= portionSize
+        let co2ePerPortion = String(format: "%.1f", co2ePerPortionCalc)
+        
+        foodInfoTitleLabel.text = title
+        foodInfoCO2ePerKgLabel.text = co2ePerKg
+        foodInfoCO2ePerPortionLabel.text = co2ePerPortion
     }
     
     

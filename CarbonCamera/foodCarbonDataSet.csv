@@ -1,27 +1,16 @@
-﻿foodID,name,portionsize,co2e_kg,water_l,resnet50classlabel
-0,Wine,750ml bottle,,,wine bottle
-1,Red Wine,750ml bottle,,,red wine
-2,Bottle of Beer,500ml bottle,,,beer bottle
-3,,,,,
-4,,,,,
-5,,,,,
-6,,,,,
-7,,,,,
-8,,,,,
-9,,,,,
-10,,,,,
-11,,,,,
-12,,,,,
-13,,,,,
-14,,,,,
-15,,,,,
-16,,,,,
-17,,,,,
-18,,,,,
-19,,,,,
-20,,,,,
-21,,,,,
-22,,,,,
-23,,,,,
-24,,,,,
-25,,,,,
+foodID,name,portionsize_string,portionsize_value_kg,co2e_kg_per_kg,resnet50classlabel,source
+0,Bottle of Wine,750ml bottle,0.75,1.4,wine bottle,https://ourworldindata.org/food-choice-vs-eating-local
+1,Red Wine,750ml bottle,0.75,1.4,red wine,https://ourworldindata.org/food-choice-vs-eating-local
+2,Bottle of Beer,330ml bottle,0.33,1.7,beer bottle,http://www.avnir.org/documentation/book/LCAconf_munoz2_2012_en.pdf
+3,Pint of Beer,1 pint,0.57,1.7,beer glass,
+4,Apple,1 large apple,0.2,0.4,,https://ourworldindata.org/food-choice-vs-eating-local
+5,Banana,1 banana,0.15,0.8,banana,https://ourworldindata.org/food-choice-vs-eating-local
+6,Pineapple,1 large slice,0.15,11.1,pineapple; ananas,https://books.google.co.uk/books?id=Gp-4LlAkbqsC&pg=PA36&lpg=PA36&dq=pineapple+co2e&source=bl&ots=Ay0ez9lpGE&sig=ACfU3U22LhYw92qhBqQ_G4B7fhxMSp7TAA&hl=en&sa=X&ved=2ahUKEwiQ_L_Tj-vqAhV2QkEAHa_TBAUQ6AEwAHoECAoQAQ#v=onepage&q=pineapple%20co2e&f=false
+7,Orange,1 orange,0.1,0.3,orange,https://saiplatform.org/uploads/Library/WG%20Fruit%20-%20ART%20Final%20Report.pdf
+8,Lemon,1 lemon,0.1,0.3,lemon,https://ourworldindata.org/food-choice-vs-eating-local
+9,Strawberries,100g portion,0.1,2.0,strawberry,"https://saiplatform.org/uploads/Library/WG%20Fruit%20-%20ART%20Final%20Report.pdf, https://www.researchgate.net/figure/Greenhouse-gas-emissions-per-1-kg-of-strawberries_fig2_301270042"
+10,Cucumber,1 cucumber,0.3,0.23,"cucumber, cuke",https://core.ac.uk/download/pdf/76958641.pdf
+11,Poultry Meat,250g portion,0.25,6.1,butcher shop; meat market,https://ourworldindata.org/food-choice-vs-eating-local
+12,Pork Meat,250g portion,0.25,7.2,butcher shop; meat market,https://ourworldindata.org/food-choice-vs-eating-local
+13,Lamb Meat,250g portion,0.25,24.5,butcher shop; meat market,https://ourworldindata.org/food-choice-vs-eating-local
+14,Beef Meat,250g portion,0.25,59.6,butcher shop; meat market,https://ourworldindata.org/food-choice-vs-eating-local
