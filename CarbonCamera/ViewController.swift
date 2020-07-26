@@ -13,6 +13,9 @@ import Vision  // Vision module of CoreML
 
 // TODO: Reset torch button image when app comes back into view after being suspended
 
+// TODO: Make suggestion button row go to edges of screen
+// TODO: Show first classified food as suggestion button 0, with highlighted edge to indicate that it is the current show food
+
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
@@ -27,6 +30,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var foodInfoCO2ePerKgLabel: UILabel!
     @IBOutlet weak var foodInfoCO2ePerPortionLabel: UILabel!
     @IBOutlet weak var foodInfoCO2ePerPortionDescLabel: UILabel!
+    
+    @IBOutlet weak var suggestionButton1: FoodButton!
+    @IBOutlet weak var suggestionButton2: FoodButton!
+    @IBOutlet weak var suggestionButton3: FoodButton!
+    @IBOutlet weak var suggestionButton4: FoodButton!
+    @IBOutlet weak var suggestionButton5: FoodButton!
     
     
     @IBOutlet weak var classificationResultLabel: UILabel!
@@ -260,7 +269,17 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     
     func setUpFoodSuggestionsView(foodID: [Int]) {
-        // TODO: make this, set buttons to other foods
+
+        suggestionButton1.foodID = foodID[0]
+        suggestionButton1.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[0]) ?? "", for: .normal)
+        suggestionButton2.foodID = foodID[1]
+        suggestionButton2.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[1]) ?? "", for: .normal)
+        suggestionButton3.foodID = foodID[2]
+        suggestionButton3.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[2]) ?? "", for: .normal)
+        suggestionButton4.foodID = foodID[3]
+        suggestionButton4.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[3]) ?? "", for: .normal)
+        suggestionButton5.foodID = foodID[4]
+        suggestionButton5.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[4]) ?? "", for: .normal)
     }
     
     
@@ -294,6 +313,27 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         infoPanelVisible = false
         
         readyToCaptureAndProcessImage = true
+    }
+    
+    
+    @IBAction func suggestionButton1TouchUp(_ sender: Any) {
+        setUpFoodInfoView(foodID: suggestionButton1.foodID)
+    }
+    
+    @IBAction func suggestionButton2TouchUp(_ sender: Any) {
+        setUpFoodInfoView(foodID: suggestionButton2.foodID)
+    }
+    
+    @IBAction func suggestionButton3TouchUp(_ sender: Any) {
+        setUpFoodInfoView(foodID: suggestionButton3.foodID)
+    }
+    
+    @IBAction func suggestionButton4TouchUp(_ sender: Any) {
+        setUpFoodInfoView(foodID: suggestionButton4.foodID)
+    }
+    
+    @IBAction func suggestionButton5TouchUp(_ sender: Any) {
+        setUpFoodInfoView(foodID: suggestionButton5.foodID)
     }
     
     

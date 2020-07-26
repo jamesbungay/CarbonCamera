@@ -18,6 +18,8 @@
 		13D5981724CCF8D2001DCB33 /* FoodDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D5981624CCF8D2001DCB33 /* FoodDataModel.swift */; };
 		13D5982724CE14E9001DCB33 /* foodCarbonDataSet.csv in Resources */ = {isa = PBXBuildFile; fileRef = 13D5982624CE14E9001DCB33 /* foodCarbonDataSet.csv */; };
 		13D5982924CE1BE8001DCB33 /* FoodListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D5982824CE1BE8001DCB33 /* FoodListViewController.swift */; };
+		13D5982B24CE22CA001DCB33 /* FoodButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D5982A24CE22C9001DCB33 /* FoodButton.swift */; };
+		13D5982D24CE23D7001DCB33 /* UIScrollViewWithButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D5982C24CE23D7001DCB33 /* UIScrollViewWithButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		13D5981624CCF8D2001DCB33 /* FoodDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDataModel.swift; sourceTree = "<group>"; };
 		13D5982624CE14E9001DCB33 /* foodCarbonDataSet.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = foodCarbonDataSet.csv; sourceTree = "<group>"; };
 		13D5982824CE1BE8001DCB33 /* FoodListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListViewController.swift; sourceTree = "<group>"; };
+		13D5982A24CE22C9001DCB33 /* FoodButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodButton.swift; sourceTree = "<group>"; };
+		13D5982C24CE23D7001DCB33 /* UIScrollViewWithButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewWithButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 				13D5982824CE1BE8001DCB33 /* FoodListViewController.swift */,
 				13D5981624CCF8D2001DCB33 /* FoodDataModel.swift */,
 				13AC059724CB130400A78BE1 /* CameraPreviewView.swift */,
+				13D5982A24CE22C9001DCB33 /* FoodButton.swift */,
+				13D5982C24CE23D7001DCB33 /* UIScrollViewWithButtons.swift */,
 				13AC059B24CB781900A78BE1 /* Resnet50.mlmodel */,
 				13D5982624CE14E9001DCB33 /* foodCarbonDataSet.csv */,
 				13D4770224C8BD2B0068E026 /* Main.storyboard */,
@@ -160,7 +166,9 @@
 				13D4770124C8BD2B0068E026 /* ViewController.swift in Sources */,
 				13D5981724CCF8D2001DCB33 /* FoodDataModel.swift in Sources */,
 				13D476FD24C8BD2B0068E026 /* AppDelegate.swift in Sources */,
+				13D5982D24CE23D7001DCB33 /* UIScrollViewWithButtons.swift in Sources */,
 				13D476FF24C8BD2B0068E026 /* SceneDelegate.swift in Sources */,
+				13D5982B24CE22CA001DCB33 /* FoodButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

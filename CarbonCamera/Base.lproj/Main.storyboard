@@ -164,17 +164,115 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8CU-b4-CDF" userLabel="Suggestion Buttons View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8CU-b4-CDF" userLabel="Suggestion Buttons View">
                                         <rect key="frame" x="0.0" y="260" width="394" height="60"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <subviews>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="koK-jy-1n6">
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="60"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="XoY-hX-DBj" userLabel="Content View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXl-jQ-Xkv" customClass="FoodButton" customModule="CarbonCamera" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="112" height="60"/>
+                                                                <color key="backgroundColor" red="0.71026332489999999" green="0.30332399189999998" blue="0.63168447490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <state key="normal" title="Button">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="suggestionButton1TouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zuk-fY-Xl8"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGX-Lp-MWo" customClass="FoodButton" customModule="CarbonCamera" customModuleProvider="target">
+                                                                <rect key="frame" x="122" y="0.0" width="112" height="60"/>
+                                                                <color key="backgroundColor" red="0.71026332489999999" green="0.30332399189999998" blue="0.63168447490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <state key="normal" title="Button">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="suggestionButton2TouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Ac-nG-OST"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sHJ-fY-YYV" customClass="FoodButton" customModule="CarbonCamera" customModuleProvider="target">
+                                                                <rect key="frame" x="244" y="0.0" width="112" height="60"/>
+                                                                <color key="backgroundColor" red="0.71026332489999999" green="0.30332399189999998" blue="0.63168447490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <state key="normal" title="Button">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="suggestionButton3TouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P7b-RW-aMM"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="66a-pN-r4q" customClass="FoodButton" customModule="CarbonCamera" customModuleProvider="target">
+                                                                <rect key="frame" x="366" y="0.0" width="112" height="60"/>
+                                                                <color key="backgroundColor" red="0.71026332489999999" green="0.30332399189999998" blue="0.63168447490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <state key="normal" title="Button">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="suggestionButton4TouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0lX-W9-K0M"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A01-wa-3YF" customClass="FoodButton" customModule="CarbonCamera" customModuleProvider="target">
+                                                                <rect key="frame" x="488" y="0.0" width="112" height="60"/>
+                                                                <color key="backgroundColor" red="0.71026332489999999" green="0.30332399189999998" blue="0.63168447490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <state key="normal" title="Button">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="suggestionButton5TouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sVd-n1-2YW"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="600" id="TWq-0x-0oY"/>
+                                                            <constraint firstAttribute="height" constant="60" id="izl-KS-IqF"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="XoY-hX-DBj" secondAttribute="bottom" id="51D-Ut-qyp"/>
+                                                    <constraint firstAttribute="height" constant="60" id="7Zu-BQ-Z0Q"/>
+                                                    <constraint firstItem="XoY-hX-DBj" firstAttribute="top" secondItem="koK-jy-1n6" secondAttribute="top" id="DT4-x9-Os3"/>
+                                                    <constraint firstAttribute="trailing" secondItem="XoY-hX-DBj" secondAttribute="trailing" id="XtW-ks-NeD"/>
+                                                    <constraint firstItem="XoY-hX-DBj" firstAttribute="leading" secondItem="koK-jy-1n6" secondAttribute="leading" id="fVm-Mx-q2R"/>
+                                                </constraints>
+                                                <viewLayoutGuide key="contentLayoutGuide" id="1S9-4f-Kgq"/>
+                                                <viewLayoutGuide key="frameLayoutGuide" id="xLR-zD-76M"/>
+                                            </scrollView>
+                                        </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="koK-jy-1n6" secondAttribute="trailing" id="1yC-aG-2kn"/>
                                             <constraint firstAttribute="height" constant="60" id="CsI-DV-8Pb"/>
+                                            <constraint firstAttribute="bottom" secondItem="koK-jy-1n6" secondAttribute="bottom" id="Gzg-79-jQQ"/>
+                                            <constraint firstItem="koK-jy-1n6" firstAttribute="leading" secondItem="8CU-b4-CDF" secondAttribute="leading" id="WhY-L7-T4f"/>
+                                            <constraint firstItem="koK-jy-1n6" firstAttribute="top" secondItem="8CU-b4-CDF" secondAttribute="top" id="urb-XP-gCS"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -220,6 +318,11 @@
                         <outlet property="foodListButton" destination="SYW-N7-Rc1" id="cih-cC-S0j"/>
                         <outlet property="infoPanelStackViewBottomConstraint" destination="UhC-Ok-AfP" id="22E-A9-VUn"/>
                         <outlet property="shutterButton" destination="1LT-zQ-YH3" id="fJT-zh-LHQ"/>
+                        <outlet property="suggestionButton1" destination="yXl-jQ-Xkv" id="8Rk-BP-uCg"/>
+                        <outlet property="suggestionButton2" destination="rGX-Lp-MWo" id="FeP-ir-bda"/>
+                        <outlet property="suggestionButton3" destination="sHJ-fY-YYV" id="VRQ-Cu-Aaf"/>
+                        <outlet property="suggestionButton4" destination="66a-pN-r4q" id="2VQ-KT-Npg"/>
+                        <outlet property="suggestionButton5" destination="A01-wa-3YF" id="grg-3x-luX"/>
                         <outlet property="torchButton" destination="Kf8-1e-Zhk" id="fmr-s5-f09"/>
                         <segue destination="OuP-zx-BY5" kind="presentation" identifier="segueToFoodInfoViewController" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="lWb-Ue-Sbw"/>
                     </connections>
