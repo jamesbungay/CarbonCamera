@@ -13,7 +13,6 @@ import Vision  // Vision module of CoreML
 
 // TODO: Reset torch button image when app comes back into view after being suspended
 
-// TODO: Make suggestion button row go to edges of screen
 // TODO: Show first classified food as suggestion button 0, with highlighted edge to indicate that it is the current show food
 
 
