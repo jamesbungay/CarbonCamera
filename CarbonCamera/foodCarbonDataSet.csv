@@ -7,7 +7,7 @@ foodID,name,portionsize_string,portionsize_value_kg,co2e_kg_per_kg,resnet50class
 5,Pot of Coffee,3 cups,0.03,16.5,coffeepot,https://ourworldindata.org/food-choice-vs-eating-local
 6,Cup of Coffee,1 cup,0.01,16.5,coffee mug,https://ourworldindata.org/food-choice-vs-eating-local
 7,Espresso,single 7g shot,0.007,16.5,espresso,https://ourworldindata.org/food-choice-vs-eating-local
-8,Cup of Tea,1 teabag,0.002,26.5,teapot,https://steenbergs.co.uk/blog/whats-the-carbon-footprint-of-your-cuppa
+8,Cup of Tea,1 teabag,0.00175,26.5,teapot,https://steenbergs.co.uk/blog/whats-the-carbon-footprint-of-your-cuppa
 9,Baguette,400g baguette,0.4,1.4,French loaf,https://ourworldindata.org/food-choice-vs-eating-local
 10,Pretzel,1 pretzel,0.1,1.4,pretzel,https://ourworldindata.org/food-choice-vs-eating-local
 11,Bagel,1 bagel,0.1,1.4,bagel; beigel,https://ourworldindata.org/food-choice-vs-eating-local
@@ -20,15 +20,23 @@ foodID,name,portionsize_string,portionsize_value_kg,co2e_kg_per_kg,resnet50class
 18,Strawberries,100g portion,0.1,1.7,strawberry,https://saiplatform.org/uploads/Library/WG%20Fruit%20-%20ART%20Final%20Report.pdf; https://www.researchgate.net/figure/Greenhouse-gas-emissions-per-1-kg-of-strawberries_fig2_301270042; https://core.ac.uk/download/pdf/76958641.pdf
 19,Cucumber,1 cucumber,0.3,0.23,cucumber; cuke,https://core.ac.uk/download/pdf/76958641.pdf
 20,Courgette,1 courgette,0.2,0.2,zucchini; courgette,https://core.ac.uk/download/pdf/76958641.pdf
-21,Bell Pepper,1 bell pepper,0.15,1.1,bell pepper,https://core.ac.uk/download/pdf/76958641.pdf
-22,Pomegranate,150g portion,0.15,1.3,pomegranate,
-23,Lettuce / Cabbage,1 lettuce,0.5,0.4,head cabbage,https://core.ac.uk/download/pdf/76958641.pdf
-24,Cauliflower,1 cauliflower,0.5,0.4,cauliflower,https://core.ac.uk/download/pdf/76958641.pdf
-25,Mashed Potato,300g portion,0.3,0.3,mashed potato,https://ourworldindata.org/food-choice-vs-eating-local
-26,Mushroom,150g portion,0.15,0.27,mushroom,https://core.ac.uk/download/pdf/76958641.pdf
-27,Ice Lolly,1 lolly,0.1,2.8,ice lolly; lolly; lollipop; popsicle,
-28,Pizza,400g pizza,0.4,3.5,pizza; pizza pie,https://faseb.onlinelibrary.wiley.com/doi/abs/10.1096/fasebj.31.1_supplement.lb386
-29,Poultry Meat,250g portion,0.25,6.1,butcher shop; meat market,https://ourworldindata.org/food-choice-vs-eating-local
-30,Pork Meat,250g portion,0.25,7.2,butcher shop; meat market,https://ourworldindata.org/food-choice-vs-eating-local
-31,Lamb Meat,250g portion,0.25,24.5,butcher shop; meat market,https://ourworldindata.org/food-choice-vs-eating-local
-32,Beef Meat,250g portion,0.25,59.6,butcher shop; meat market,https://ourworldindata.org/food-choice-vs-eating-local
+21,Corn,100g portion,0.1,0.5,corn,https://core.ac.uk/download/pdf/76958641.pdf
+22,Bell Pepper,1 bell pepper,0.15,1.1,bell pepper,https://core.ac.uk/download/pdf/76958641.pdf
+23,Pomegranate,150g portion,0.15,1.3,pomegranate,
+24,Lettuce,1 lettuce,0.5,0.4,head cabbage,https://core.ac.uk/download/pdf/76958641.pdf
+25,Cauliflower,1 cauliflower,0.5,0.4,cauliflower,https://core.ac.uk/download/pdf/76958641.pdf
+26,Broccoli,1 broccoli,0.5,0.4,broccoli,https://core.ac.uk/download/pdf/76958641.pdf
+27,Mashed Potato,300g portion,0.3,0.3,mashed potato,https://ourworldindata.org/food-choice-vs-eating-local
+28,Mushroom,150g portion,0.15,0.27,mushroom,https://core.ac.uk/download/pdf/76958641.pdf
+29,Avocado,small avocado,0.08,5.3,guacamole,https://sustainablefoodtrust.org/articles/why-our-love-for-avocados-is-not-sustainable/
+30,Ice Lolly,1 lolly,0.1,2.8,ice lolly; lolly; lollipop; popsicle,
+31,Ice Cream,1 scoop,0.1,2.8,ice cream; icecream,
+32,Pizza,400g pizza,0.4,3.5,pizza; pizza pie,https://faseb.onlinelibrary.wiley.com/doi/abs/10.1096/fasebj.31.1_supplement.lb386
+33,Bowl of Soup,400ml bowl,0.4,0.3,soup bowl,https://ourworldindata.org/food-choice-vs-eating-local
+34,Chicken Pie,300g pie,0.3,6.1,potpie,
+35,Beef Burger,6oz burger,0.17,59.6,cheeseburger,https://ourworldindata.org/food-choice-vs-eating-local
+36,Pork Sausage,1 sausage,0.15,7.2,hotdog; hot dog; red hot,https://ourworldindata.org/food-choice-vs-eating-local
+37,Poultry Meat,250g portion,0.25,6.1,rotisserie,https://ourworldindata.org/food-choice-vs-eating-local
+38,Beef Meat,250g portion,0.25,59.6,meat loaf; meatloaf,https://ourworldindata.org/food-choice-vs-eating-local
+39,Lamb Meat,250g portion,0.25,24.5,butcher shop; meat market,https://ourworldindata.org/food-choice-vs-eating-local
+40,Pork Meat,250g portion,0.25,7.2,unknown,https://ourworldindata.org/food-choice-vs-eating-local

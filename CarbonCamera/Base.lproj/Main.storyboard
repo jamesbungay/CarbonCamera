@@ -19,8 +19,29 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYW-N7-Rc1" userLabel="Food List Button">
+                                <rect key="frame" x="20" y="467" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.71026332489999999" green="0.30332399189999998" blue="0.63168447490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="F75-dp-WYi"/>
+                                    <constraint firstAttribute="width" constant="40" id="XQ2-h9-9no"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="list.dash" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="foodListButtonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wiq-cO-wVV"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kf8-1e-Zhk">
-                                <rect key="frame" x="354" y="64" width="40" height="40"/>
+                                <rect key="frame" x="354" y="467" width="40" height="40"/>
                                 <color key="backgroundColor" red="0.71026332489999999" green="0.30332399189999998" blue="0.63168447490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="HSq-AW-O65"/>
@@ -166,21 +187,25 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="JIw-xf-5a9" firstAttribute="top" secondItem="SYW-N7-Rc1" secondAttribute="bottom" priority="750" constant="25" id="6Cc-fS-94z"/>
                             <constraint firstItem="JIw-xf-5a9" firstAttribute="top" secondItem="1LT-zQ-YH3" secondAttribute="bottom" priority="750" constant="10" id="78Q-p2-f7B"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SYW-N7-Rc1" secondAttribute="bottom" constant="25" id="8wl-Uo-GQ7"/>
                             <constraint firstItem="1Aq-Ob-6e2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="IIB-Zb-EhN"/>
                             <constraint firstItem="E3L-zd-Qbi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LeD-Ls-1pd"/>
                             <constraint firstAttribute="trailing" secondItem="E3L-zd-Qbi" secondAttribute="trailing" id="MfU-IN-lX7"/>
                             <constraint firstItem="JIw-xf-5a9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="Rna-Ye-iYM"/>
+                            <constraint firstItem="SYW-N7-Rc1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Tev-oX-SjD"/>
                             <constraint firstItem="1Aq-Ob-6e2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Tsf-cx-V6K"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JIw-xf-5a9" secondAttribute="bottom" constant="10" id="UhC-Ok-AfP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1LT-zQ-YH3" secondAttribute="bottom" constant="10" id="XPd-EJ-jno"/>
                             <constraint firstItem="1LT-zQ-YH3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eRw-xl-pkI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1Aq-Ob-6e2" secondAttribute="trailing" constant="50" id="fCe-JP-ipl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Kf8-1e-Zhk" secondAttribute="bottom" constant="25" id="fZl-Pw-I4n"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JIw-xf-5a9" secondAttribute="trailing" constant="10" id="fub-E2-LCs"/>
                             <constraint firstItem="E3L-zd-Qbi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="g70-cm-dZ8"/>
+                            <constraint firstItem="JIw-xf-5a9" firstAttribute="top" secondItem="Kf8-1e-Zhk" secondAttribute="bottom" priority="750" constant="25" id="r8b-eo-eqZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kf8-1e-Zhk" secondAttribute="trailing" constant="20" id="rxv-4a-RQI"/>
                             <constraint firstAttribute="bottom" secondItem="E3L-zd-Qbi" secondAttribute="bottom" id="wjh-ZM-sst"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="Kf8-1e-Zhk" secondAttribute="top" constant="-20" id="xWF-1E-uxf"/>
                             <constraint firstItem="1Aq-Ob-6e2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="xjv-nI-NoX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -189,8 +214,10 @@
                         <outlet property="cameraPreviewView" destination="E3L-zd-Qbi" id="945-yB-7hu"/>
                         <outlet property="classificationResultLabel" destination="1Aq-Ob-6e2" id="yxt-lE-fWJ"/>
                         <outlet property="foodInfoCO2ePerKgLabel" destination="Z1X-59-qT0" id="viC-vz-bxI"/>
+                        <outlet property="foodInfoCO2ePerPortionDescLabel" destination="0sM-h0-Ew9" id="Suk-J2-1hy"/>
                         <outlet property="foodInfoCO2ePerPortionLabel" destination="QJm-Vg-iZt" id="RAu-A0-EB6"/>
                         <outlet property="foodInfoTitleLabel" destination="QQq-hx-uee" id="UKx-ll-jAY"/>
+                        <outlet property="foodListButton" destination="SYW-N7-Rc1" id="cih-cC-S0j"/>
                         <outlet property="infoPanelStackViewBottomConstraint" destination="UhC-Ok-AfP" id="22E-A9-VUn"/>
                         <outlet property="shutterButton" destination="1LT-zQ-YH3" id="fJT-zh-LHQ"/>
                         <outlet property="torchButton" destination="Kf8-1e-Zhk" id="fmr-s5-f09"/>
@@ -204,6 +231,7 @@
     <resources>
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="lightbulb.slash" catalog="system" width="116" height="128"/>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
     </resources>
 </document>

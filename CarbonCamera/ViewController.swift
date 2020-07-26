@@ -18,13 +18,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 
     @IBOutlet weak var cameraPreviewView: CameraPreviewView!
     
+    @IBOutlet weak var foodListButton: UIButton!
     @IBOutlet weak var torchButton: UIButton!
     @IBOutlet weak var shutterButton: UIButton!
     
-    // TODO: add outlet for suggestion buttons and food info labels
+    // TODO: add outlet for suggestion buttons
     @IBOutlet weak var foodInfoTitleLabel: UILabel!
     @IBOutlet weak var foodInfoCO2ePerKgLabel: UILabel!
     @IBOutlet weak var foodInfoCO2ePerPortionLabel: UILabel!
+    @IBOutlet weak var foodInfoCO2ePerPortionDescLabel: UILabel!
     
     
     @IBOutlet weak var classificationResultLabel: UILabel!
@@ -224,7 +226,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             self.setUpFoodSuggestionsView(foodID: Array(top6FoodIDs.dropFirst(1)))
             
             // Display info panel on screen:
-            UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = 10; self.shutterButton.alpha = 0; self.view.layoutIfNeeded() }, completion: nil)
+            UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = 10; self.shutterButton.alpha = 0; self.torchButton.alpha = 0; self.foodListButton.alpha = 0; self.view.layoutIfNeeded() }, completion: nil)
             self.infoPanelVisible = true
         }
     }
@@ -235,18 +237,25 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     func setUpFoodInfoView(foodID: Int) {
         
         let title = foodDataModel.getNameFromFoodID(foodID: foodID) ?? "Unknown Food"
-        let co2ePerKg = foodDataModel.getCO2eFromFoodID(foodID: foodID) ?? "1"
+        let co2ePerKg = foodDataModel.getCO2eFromFoodID(foodID: foodID) ?? "?"
         let portionSize = foodDataModel.getPortionSizeValueFromFoodID(foodID: foodID) ?? 1
-        var co2ePerPortionCalc = Double(co2ePerKg) ?? 1
-        co2ePerPortionCalc *= portionSize
-        var co2ePerPortion = String(format: "%.1f", co2ePerPortionCalc)
-        if co2ePerPortion == "0.0" {
-            co2ePerPortion = "<0.1"
+        var co2ePerPortion = ""
+        if co2ePerKg != "?" {
+            var co2ePerPortionCalc = Double(co2ePerKg) ?? 1
+            co2ePerPortionCalc *= portionSize
+            co2ePerPortion = String(format: "%.1f", co2ePerPortionCalc)
+            if co2ePerPortion == "0.0" {
+                co2ePerPortion = "<0.1"
+            }
+        } else {
+           co2ePerPortion = "?"
         }
+        let co2ePerPortionDesc = foodDataModel.getPortionSizeTextFromFoodID(foodID: foodID) ?? "portion"
         
         foodInfoTitleLabel.text = title
         foodInfoCO2ePerKgLabel.text = co2ePerKg
         foodInfoCO2ePerPortionLabel.text = co2ePerPortion
+        foodInfoCO2ePerPortionDescLabel.text = "kg CO2e per " + co2ePerPortionDesc
     }
     
     
@@ -272,9 +281,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     
+    @IBAction func foodListButtonTouchUp(_ sender: Any) {
+    }
+    
+    
     @IBAction func infoPanelCloseButtonTouchUp(_ sender: Any) {
         
-        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = -400; self.shutterButton.alpha = 1; self.view.layoutIfNeeded() }, completion: nil)
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = -400; self.shutterButton.alpha = 1; self.torchButton.alpha = 1; self.foodListButton.alpha = 1; self.view.layoutIfNeeded() }, completion: nil)
         infoPanelVisible = false
         
         readyToCaptureAndProcessImage = true
