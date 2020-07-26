@@ -43,6 +43,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.infoPanelStackViewBottomConstraint.constant = -400
+        self.view.layoutIfNeeded()
+        
         // Verify authorisation for video capture, and then set up captureSession:
         
         if AVCaptureDevice.authorizationStatus(for: .video) == .authorized || AVCaptureDevice.authorizationStatus(for: .video) == .notDetermined {

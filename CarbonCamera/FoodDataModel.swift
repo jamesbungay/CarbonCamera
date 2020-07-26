@@ -10,7 +10,7 @@ import Foundation
 
 class FoodDataModel {
     
-    // MARK: Food Dataset Interaction Methods
+    // MARK: Get Data From Dataset Methods
     
     func getFoodIDOf(classificationIdentifier: String) -> Int {  // Returns -1 if input classificationIdenfitier was not in food-info-datafile
         
