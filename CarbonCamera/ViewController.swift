@@ -226,7 +226,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             self.setUpFoodSuggestionsView(foodID: Array(top6FoodIDs.dropFirst(1)))
             
             // Display info panel on screen:
-            UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = 10; self.shutterButton.alpha = 0; self.torchButton.alpha = 0; self.foodListButton.alpha = 0; self.view.layoutIfNeeded() }, completion: nil)
+            UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = 10; self.shutterButton.alpha = 0; self.torchButton.alpha = 0; self.foodListButton.alpha = 0; self.view.layoutIfNeeded() }, completion: nil)
             self.infoPanelVisible = true
         }
     }
@@ -282,12 +282,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     
     @IBAction func foodListButtonTouchUp(_ sender: Any) {
+        
+        if !self.readyToCaptureAndProcessImage { return }
+        self.performSegue(withIdentifier: "segueToFoodInfoViewController", sender: nil)
     }
     
     
     @IBAction func infoPanelCloseButtonTouchUp(_ sender: Any) {
         
-        UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = -400; self.shutterButton.alpha = 1; self.torchButton.alpha = 1; self.foodListButton.alpha = 1; self.view.layoutIfNeeded() }, completion: nil)
+        UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = -400; self.shutterButton.alpha = 1; self.torchButton.alpha = 1; self.foodListButton.alpha = 1; self.view.layoutIfNeeded() }, completion: nil)
         infoPanelVisible = false
         
         readyToCaptureAndProcessImage = true

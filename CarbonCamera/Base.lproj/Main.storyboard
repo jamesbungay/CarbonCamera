@@ -221,11 +221,28 @@
                         <outlet property="infoPanelStackViewBottomConstraint" destination="UhC-Ok-AfP" id="22E-A9-VUn"/>
                         <outlet property="shutterButton" destination="1LT-zQ-YH3" id="fJT-zh-LHQ"/>
                         <outlet property="torchButton" destination="Kf8-1e-Zhk" id="fmr-s5-f09"/>
+                        <segue destination="OuP-zx-BY5" kind="presentation" identifier="segueToFoodInfoViewController" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="lWb-Ue-Sbw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="118.52678571428571"/>
+        </scene>
+        <!--Food List View Controller-->
+        <scene sceneID="oHW-XW-t3b">
+            <objects>
+                <viewController id="OuP-zx-BY5" customClass="FoodListViewController" customModule="CarbonCamera" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0at-Lf-sdB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="zYk-Dw-4Vn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="WdE-lB-Dn9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IBW-0I-YTb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="933" y="119"/>
         </scene>
     </scenes>
     <resources>

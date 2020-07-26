@@ -17,6 +17,7 @@
 		13D4770924C8BD2C0068E026 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13D4770724C8BD2C0068E026 /* LaunchScreen.storyboard */; };
 		13D5981724CCF8D2001DCB33 /* FoodDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D5981624CCF8D2001DCB33 /* FoodDataModel.swift */; };
 		13D5982724CE14E9001DCB33 /* foodCarbonDataSet.csv in Resources */ = {isa = PBXBuildFile; fileRef = 13D5982624CE14E9001DCB33 /* foodCarbonDataSet.csv */; };
+		13D5982924CE1BE8001DCB33 /* FoodListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D5982824CE1BE8001DCB33 /* FoodListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		13D4770A24C8BD2C0068E026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13D5981624CCF8D2001DCB33 /* FoodDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDataModel.swift; sourceTree = "<group>"; };
 		13D5982624CE14E9001DCB33 /* foodCarbonDataSet.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = foodCarbonDataSet.csv; sourceTree = "<group>"; };
+		13D5982824CE1BE8001DCB33 /* FoodListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				13D476FC24C8BD2B0068E026 /* AppDelegate.swift */,
 				13D476FE24C8BD2B0068E026 /* SceneDelegate.swift */,
 				13D4770024C8BD2B0068E026 /* ViewController.swift */,
+				13D5982824CE1BE8001DCB33 /* FoodListViewController.swift */,
 				13D5981624CCF8D2001DCB33 /* FoodDataModel.swift */,
 				13AC059724CB130400A78BE1 /* CameraPreviewView.swift */,
 				13AC059B24CB781900A78BE1 /* Resnet50.mlmodel */,
@@ -152,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13AC059C24CB781900A78BE1 /* Resnet50.mlmodel in Sources */,
+				13D5982924CE1BE8001DCB33 /* FoodListViewController.swift in Sources */,
 				13AC059824CB130400A78BE1 /* CameraPreviewView.swift in Sources */,
 				13D4770124C8BD2B0068E026 /* ViewController.swift in Sources */,
 				13D5981724CCF8D2001DCB33 /* FoodDataModel.swift in Sources */,
