@@ -10,7 +10,7 @@ import Foundation
 
 class FoodDataModel {
     
-    var dataSet: [[String]]  // TODO: make private
+    private var dataSet: [[String]]
     
     init(resourceNameOfCsvToUse: String) {
         self.dataSet = FoodDataModel.loadCsvToArray(resourceName: resourceNameOfCsvToUse) ?? []
@@ -53,27 +53,62 @@ class FoodDataModel {
     }
     
     
-    // MARK: Getters
+    // MARK: Getters for dataset values
     
-    func getFoodIDOf(classificationIdentifier: String) -> Int {  // Returns -1 if input classificationIdenfitier was not in food-info-datafile
+    func getFoodIDOf(classificationIdentifier: String) -> Int? {  // Returns nil if input classificationIdenfitier was not in food-info-datafile
         
-        // TODO: Retrieve FoodID of input identifier
-        return -1
+        for food in self.dataSet {
+            if food[5] == classificationIdentifier {
+                guard let foodIDOut = Int(food[0])
+                    else { return nil }
+                return foodIDOut
+            }
+        }
+        
+        return nil
     }
     
-    func getNameFromFoodID(foodID: Int) -> String {
-        return "placeholderfoodname"
+    func getNameFromFoodID(foodID: Int) -> String? {
+        
+        for food in self.dataSet {
+            if food[0] == String(foodID) {
+                return food[1]
+            }
+        }
+        
+        return nil
     }
     
-    func getPortionSizeFromFoodID(foodID: Int) -> String {
-        return "placeholderportionsize"
+    func getPortionSizeFromFoodID(foodID: Int) -> String? {
+        
+        for food in self.dataSet {
+            if food[0] == String(foodID) {
+                return food[2]
+            }
+        }
+        
+        return nil
     }
     
-    func getCO2eFromFoodID(foodID: Int) -> String {
+    func getCO2eFromFoodID(foodID: Int) -> String? {
+        
+        for food in self.dataSet {
+            if food[0] == String(foodID) {
+                return food[3]
+            }
+        }
+        
         return "0"
     }
     
-    func getWaterUseFromFoodID(foodID: Int) -> String {
+    func getWaterUseFromFoodID(foodID: Int) -> String? {
+        
+        for food in self.dataSet {
+            if food[0] == String(foodID) {
+                return food[4]
+            }
+        }
+        
         return "0"
     }
     

@@ -43,8 +43,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(foodDataModel.dataSet)
-        
         self.infoPanelStackViewBottomConstraint.constant = -400
         self.view.layoutIfNeeded()
         
