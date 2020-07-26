@@ -28,7 +28,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var infoPanelStackViewBottomConstraint: NSLayoutConstraint!
     
     
-    let foodDataModel = FoodDataModel()
+    let foodDataModel = FoodDataModel(resourceNameOfCsvToUse: "foodCarbonDataSet")
     
     var deviceHasTorch: Bool = false
     
@@ -42,6 +42,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(foodDataModel.dataSet)
         
         self.infoPanelStackViewBottomConstraint.constant = -400
         self.view.layoutIfNeeded()

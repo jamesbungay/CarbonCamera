@@ -16,6 +16,7 @@
 		13D4770624C8BD2C0068E026 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13D4770524C8BD2C0068E026 /* Assets.xcassets */; };
 		13D4770924C8BD2C0068E026 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13D4770724C8BD2C0068E026 /* LaunchScreen.storyboard */; };
 		13D5981724CCF8D2001DCB33 /* FoodDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D5981624CCF8D2001DCB33 /* FoodDataModel.swift */; };
+		13D5981924CDAD29001DCB33 /* foodCarbonDataSet.csv in Resources */ = {isa = PBXBuildFile; fileRef = 13D5981824CDAD29001DCB33 /* foodCarbonDataSet.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		13D4770824C8BD2C0068E026 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13D4770A24C8BD2C0068E026 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13D5981624CCF8D2001DCB33 /* FoodDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDataModel.swift; sourceTree = "<group>"; };
+		13D5981824CDAD29001DCB33 /* foodCarbonDataSet.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = foodCarbonDataSet.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				13D5981624CCF8D2001DCB33 /* FoodDataModel.swift */,
 				13AC059724CB130400A78BE1 /* CameraPreviewView.swift */,
 				13AC059B24CB781900A78BE1 /* Resnet50.mlmodel */,
+				13D5981824CDAD29001DCB33 /* foodCarbonDataSet.csv */,
 				13D4770224C8BD2B0068E026 /* Main.storyboard */,
 				13D4770524C8BD2C0068E026 /* Assets.xcassets */,
 				13D4770724C8BD2C0068E026 /* LaunchScreen.storyboard */,
@@ -136,6 +139,7 @@
 			files = (
 				13D4770924C8BD2C0068E026 /* LaunchScreen.storyboard in Resources */,
 				13D4770624C8BD2C0068E026 /* Assets.xcassets in Resources */,
+				13D5981924CDAD29001DCB33 /* foodCarbonDataSet.csv in Resources */,
 				13D4770424C8BD2B0068E026 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
