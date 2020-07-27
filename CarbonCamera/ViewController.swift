@@ -11,9 +11,19 @@ import AVFoundation
 import Vision  // Vision module of CoreML
 
 
-// TODO: Reset torch button image when app comes back into view after being suspended
+// TODO: Remove classification output from top of screen
 
 // TODO: Show first classified food as suggestion button 0, with highlighted edge to indicate that it is the current show food
+
+// TODO: Spinning loading symbol on shutter button between clicking and classification complete
+
+// TODO: Improve food info view ui arrangement
+
+// TODO: Only have torch on when taking photo
+
+// TODO: Reset torch button image when app comes back into view after being suspended
+
+// TODO: Scroll suggestion buttons back to left when closing
 
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
