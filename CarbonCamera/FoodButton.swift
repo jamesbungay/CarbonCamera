@@ -11,5 +11,6 @@ import UIKit
 class FoodButton: UIButton {
 
     var foodID: Int = -1
+    var suggestionButtonID = -1
 
 }

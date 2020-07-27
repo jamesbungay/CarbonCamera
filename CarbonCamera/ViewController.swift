@@ -13,17 +13,17 @@ import Vision  // Vision module of CoreML
 
 // TODO: Remove classification output from top of screen
 
-// TODO: Show first classified food as suggestion button 0, with highlighted edge to indicate that it is the current show food
+// TODO: DONE - Show first classified food as suggestion button 0
+// TODO: ...with highlighted edge to indicate that it is the current show food
 
 // TODO: Spinning loading symbol on shutter button between clicking and classification complete
 
 // TODO: Improve food info view ui arrangement
 
 // TODO: Only have torch on when taking photo
-
 // TODO: Reset torch button image when app comes back into view after being suspended
 
-// TODO: Scroll suggestion buttons back to left when closing
+// TODO: DONE - Scroll suggestion buttons back to left when closing
 
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
@@ -34,18 +34,21 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var torchButton: UIButton!
     @IBOutlet weak var shutterButton: UIButton!
     
-    // TODO: add outlet for suggestion buttons
     @IBOutlet weak var foodInfoTitleLabel: UILabel!
     @IBOutlet weak var foodInfoCO2ePerKgLabel: UILabel!
     @IBOutlet weak var foodInfoCO2ePerPortionLabel: UILabel!
     @IBOutlet weak var foodInfoCO2ePerPortionDescLabel: UILabel!
     
+    @IBOutlet weak var foodInfoView: UIView!
+    
+    @IBOutlet weak var scrollViewForSuggestionButtons: UIScrollView!
+    
+    @IBOutlet weak var suggestionButton0: FoodButton!
     @IBOutlet weak var suggestionButton1: FoodButton!
     @IBOutlet weak var suggestionButton2: FoodButton!
     @IBOutlet weak var suggestionButton3: FoodButton!
     @IBOutlet weak var suggestionButton4: FoodButton!
     @IBOutlet weak var suggestionButton5: FoodButton!
-    
     
     @IBOutlet weak var classificationResultLabel: UILabel!
     
@@ -63,6 +66,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var videoFrameNeedsToBeProcessed = false  // Toggled true when shutter button pressed
     var readyToCaptureAndProcessImage = true  // Toggled true when no image is currently being pressed and info panel is not visible
     
+    var currentFoodInfoShown: Int = -1  // Keeps track of which food suggestion is shown, out of the 6 foods whose buttons can be clicked to see their CO2e info when a photo is taken
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +80,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         if AVCaptureDevice.authorizationStatus(for: .video) == .authorized || AVCaptureDevice.authorizationStatus(for: .video) == .notDetermined {
             self.setUpCaptureSession()
         }
+        
+        suggestionButton0.suggestionButtonID = 0
+        suggestionButton1.suggestionButtonID = 1
+        suggestionButton2.suggestionButtonID = 2
+        suggestionButton3.suggestionButtonID = 3
+        suggestionButton4.suggestionButtonID = 4
+        suggestionButton5.suggestionButtonID = 5
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -241,7 +253,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         DispatchQueue.main.async {
             
             self.setUpFoodInfoView(foodID: top6FoodIDs[0])
-            self.setUpFoodSuggestionsView(foodID: Array(top6FoodIDs.dropFirst(1)))
+            self.setUpFoodSuggestionsView(foodID: top6FoodIDs)
             
             // Display info panel on screen:
             UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = 10; self.shutterButton.alpha = 0; self.torchButton.alpha = 0; self.foodListButton.alpha = 0; self.view.layoutIfNeeded() }, completion: nil)
@@ -279,16 +291,21 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     func setUpFoodSuggestionsView(foodID: [Int]) {
 
-        suggestionButton1.foodID = foodID[0]
-        suggestionButton1.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[0]) ?? "", for: .normal)
-        suggestionButton2.foodID = foodID[1]
-        suggestionButton2.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[1]) ?? "", for: .normal)
-        suggestionButton3.foodID = foodID[2]
-        suggestionButton3.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[2]) ?? "", for: .normal)
-        suggestionButton4.foodID = foodID[3]
-        suggestionButton4.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[3]) ?? "", for: .normal)
-        suggestionButton5.foodID = foodID[4]
-        suggestionButton5.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[4]) ?? "", for: .normal)
+        suggestionButton0.foodID = foodID[0]
+        suggestionButton0.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[0]) ?? "", for: .normal)
+        suggestionButton1.foodID = foodID[1]
+        suggestionButton1.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[1]) ?? "", for: .normal)
+        suggestionButton2.foodID = foodID[2]
+        suggestionButton2.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[2]) ?? "", for: .normal)
+        suggestionButton3.foodID = foodID[3]
+        suggestionButton3.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[3]) ?? "", for: .normal)
+        suggestionButton4.foodID = foodID[4]
+        suggestionButton4.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[4]) ?? "", for: .normal)
+        suggestionButton5.foodID = foodID[5]
+        suggestionButton5.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[5]) ?? "", for: .normal)
+        currentFoodInfoShown = 0
+        scrollViewForSuggestionButtons.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+        
     }
     
     
@@ -325,24 +342,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     
-    @IBAction func suggestionButton1TouchUp(_ sender: Any) {
-        setUpFoodInfoView(foodID: suggestionButton1.foodID)
-    }
-    
-    @IBAction func suggestionButton2TouchUp(_ sender: Any) {
-        setUpFoodInfoView(foodID: suggestionButton2.foodID)
-    }
-    
-    @IBAction func suggestionButton3TouchUp(_ sender: Any) {
-        setUpFoodInfoView(foodID: suggestionButton3.foodID)
-    }
-    
-    @IBAction func suggestionButton4TouchUp(_ sender: Any) {
-        setUpFoodInfoView(foodID: suggestionButton4.foodID)
-    }
-    
-    @IBAction func suggestionButton5TouchUp(_ sender: Any) {
-        setUpFoodInfoView(foodID: suggestionButton5.foodID)
+    // Handles touch-up event for all six suggestionButtons:
+    @IBAction func suggestionButtonTouchUp(_ sender: Any) {
+        
+        let senderButton = sender as! FoodButton
+        if currentFoodInfoShown == senderButton.suggestionButtonID { return }
+        currentFoodInfoShown = senderButton.suggestionButtonID
+        setUpFoodInfoView(foodID: senderButton.foodID)
+        UIView.transition(with: self.foodInfoView, duration: 0.3, options: [.transitionFlipFromLeft], animations: nil, completion: nil)
     }
     
     

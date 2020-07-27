@@ -193,7 +193,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XoY-hX-DBj" userLabel="Content View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="620" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="770" height="60"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZ6-pE-Hbo" userLabel="Empty Space">
                                                                 <rect key="frame" x="0.0" y="0.0" width="10" height="60"/>
@@ -202,10 +202,10 @@
                                                                 </constraints>
                                                             </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tL5-L9-q35">
-                                                                <rect key="frame" x="10" y="0.0" width="600" height="60"/>
+                                                                <rect key="frame" x="10" y="0.0" width="750" height="60"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXl-jQ-Xkv" customClass="FoodButton" customModule="CarbonCamera" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="112" height="60"/>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdc-l3-yvE" customClass="FoodButton" customModule="CarbonCamera" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="116.5" height="60"/>
                                                                         <color key="backgroundColor" red="0.71026332489999999" green="0.30332399189999998" blue="0.63168447490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <state key="normal" title="Button">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -216,11 +216,26 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                         <connections>
-                                                                            <action selector="suggestionButton1TouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zuk-fY-Xl8"/>
+                                                                            <action selector="suggestionButtonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e60-Ic-qEb"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXl-jQ-Xkv" customClass="FoodButton" customModule="CarbonCamera" customModuleProvider="target">
+                                                                        <rect key="frame" x="126.5" y="0.0" width="117" height="60"/>
+                                                                        <color key="backgroundColor" red="0.71026332489999999" green="0.30332399189999998" blue="0.63168447490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <state key="normal" title="Button">
+                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </state>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                                <integer key="value" value="5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="suggestionButtonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gK7-8w-3mp"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGX-Lp-MWo" customClass="FoodButton" customModule="CarbonCamera" customModuleProvider="target">
-                                                                        <rect key="frame" x="122" y="0.0" width="112" height="60"/>
+                                                                        <rect key="frame" x="253.5" y="0.0" width="116.5" height="60"/>
                                                                         <color key="backgroundColor" red="0.71026332489999999" green="0.30332399189999998" blue="0.63168447490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <state key="normal" title="Button">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -231,11 +246,11 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                         <connections>
-                                                                            <action selector="suggestionButton2TouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Ac-nG-OST"/>
+                                                                            <action selector="suggestionButtonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WuL-t3-HSi"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sHJ-fY-YYV" customClass="FoodButton" customModule="CarbonCamera" customModuleProvider="target">
-                                                                        <rect key="frame" x="244" y="0.0" width="112" height="60"/>
+                                                                        <rect key="frame" x="380" y="0.0" width="116.5" height="60"/>
                                                                         <color key="backgroundColor" red="0.71026332489999999" green="0.30332399189999998" blue="0.63168447490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <state key="normal" title="Button">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -246,11 +261,11 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                         <connections>
-                                                                            <action selector="suggestionButton3TouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="P7b-RW-aMM"/>
+                                                                            <action selector="suggestionButtonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="psV-6J-rAJ"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="66a-pN-r4q" customClass="FoodButton" customModule="CarbonCamera" customModuleProvider="target">
-                                                                        <rect key="frame" x="366" y="0.0" width="112" height="60"/>
+                                                                        <rect key="frame" x="506.5" y="0.0" width="117" height="60"/>
                                                                         <color key="backgroundColor" red="0.71026332489999999" green="0.30332399189999998" blue="0.63168447490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <state key="normal" title="Button">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -261,11 +276,11 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                         <connections>
-                                                                            <action selector="suggestionButton4TouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0lX-W9-K0M"/>
+                                                                            <action selector="suggestionButtonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jgu-Dn-yCc"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A01-wa-3YF" customClass="FoodButton" customModule="CarbonCamera" customModuleProvider="target">
-                                                                        <rect key="frame" x="488" y="0.0" width="112" height="60"/>
+                                                                        <rect key="frame" x="633.5" y="0.0" width="116.5" height="60"/>
                                                                         <color key="backgroundColor" red="0.71026332489999999" green="0.30332399189999998" blue="0.63168447490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <state key="normal" title="Button">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -276,20 +291,20 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                         <connections>
-                                                                            <action selector="suggestionButton5TouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sVd-n1-2YW"/>
+                                                                            <action selector="suggestionButtonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Es-l0-vAk"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
                                                             </stackView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctD-tm-efd" userLabel="Empty Space">
-                                                                <rect key="frame" x="610" y="0.0" width="10" height="60"/>
+                                                                <rect key="frame" x="760" y="0.0" width="10" height="60"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="10" id="m0A-4M-ubm"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="620" id="TWq-0x-0oY"/>
+                                                            <constraint firstAttribute="width" constant="770" id="TWq-0x-0oY"/>
                                                             <constraint firstAttribute="height" constant="60" id="izl-KS-IqF"/>
                                                         </constraints>
                                                     </stackView>
@@ -354,16 +369,19 @@
                         <outlet property="foodInfoCO2ePerPortionDescLabel" destination="0sM-h0-Ew9" id="Suk-J2-1hy"/>
                         <outlet property="foodInfoCO2ePerPortionLabel" destination="QJm-Vg-iZt" id="RAu-A0-EB6"/>
                         <outlet property="foodInfoTitleLabel" destination="QQq-hx-uee" id="UKx-ll-jAY"/>
+                        <outlet property="foodInfoView" destination="gwV-dN-Kjg" id="lsw-RO-nHD"/>
                         <outlet property="foodListButton" destination="SYW-N7-Rc1" id="cih-cC-S0j"/>
                         <outlet property="infoPanelStackViewBottomConstraint" destination="UhC-Ok-AfP" id="22E-A9-VUn"/>
+                        <outlet property="scrollViewForSuggestionButtons" destination="koK-jy-1n6" id="6Mg-AY-arw"/>
                         <outlet property="shutterButton" destination="1LT-zQ-YH3" id="fJT-zh-LHQ"/>
+                        <outlet property="suggestionButton0" destination="tdc-l3-yvE" id="QFS-Ow-T8p"/>
                         <outlet property="suggestionButton1" destination="yXl-jQ-Xkv" id="8Rk-BP-uCg"/>
                         <outlet property="suggestionButton2" destination="rGX-Lp-MWo" id="FeP-ir-bda"/>
                         <outlet property="suggestionButton3" destination="sHJ-fY-YYV" id="VRQ-Cu-Aaf"/>
                         <outlet property="suggestionButton4" destination="66a-pN-r4q" id="2VQ-KT-Npg"/>
                         <outlet property="suggestionButton5" destination="A01-wa-3YF" id="grg-3x-luX"/>
                         <outlet property="torchButton" destination="Kf8-1e-Zhk" id="fmr-s5-f09"/>
-                        <segue destination="OuP-zx-BY5" kind="presentation" identifier="segueToFoodInfoViewController" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="lWb-Ue-Sbw"/>
+                        <segue destination="OuP-zx-BY5" kind="show" identifier="segueToFoodInfoViewController" id="lWb-Ue-Sbw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -375,7 +393,7 @@
             <objects>
                 <viewController id="OuP-zx-BY5" customClass="FoodListViewController" customModule="CarbonCamera" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0at-Lf-sdB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="zYk-Dw-4Vn"/>
