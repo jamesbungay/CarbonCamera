@@ -11,12 +11,13 @@ import AVFoundation
 import Vision  // Vision module of CoreML
 
 
-// TODO: Remove classification output from top of screen
+// TODO: DONE - Remove classification output from top of screen
 
 // TODO: DONE - Show first classified food as suggestion button 0
 // TODO: DONE - ...with highlighted edge to indicate that it is the current show food
 
-// TODO: Maybe change green button colour to green shadow instead
+// TODO: Maybe - change green button colour to green shadow instead
+// TODO: Add shadow to white text on green background
 
 // TODO: Spinning loading symbol on shutter button between clicking and classification complete
 
@@ -27,7 +28,7 @@ import Vision  // Vision module of CoreML
 
 // TODO: DONE - Scroll suggestion buttons back to left when closing
 
-// TODO: Replace shutter button with 'calorie mama' like button
+// TODO: Maybe - Replace shutter button with 'calorie mama' like button
 
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
@@ -49,8 +50,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var scrollViewForSuggestionButtons: UIScrollView!
     
     @IBOutlet var suggestionButtons: [FoodButton]!
-    
-    @IBOutlet weak var classificationResultLabel: UILabel!
     
     @IBOutlet weak var infoPanelStackViewBottomConstraint: NSLayoutConstraint!
     
@@ -270,12 +269,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             
             self.handleResultsOfClassification(results: results)
             
-            // Display result of classification in UI for testing purposes; do work on main thread:
+            // Display result of classification in console for testing purposes:
             
-//            DispatchQueue.main.async {
-//                self.classificationResultLabel.text = String(results[0].identifier + " -- " + String(results[0].confidence))
-//                self.classificationResultLabel.text! += String("\n" + results[1].identifier + " -- " + String(results[1].confidence))
-//            }
+            print(results[0].identifier + " -- " + String(results[0].confidence))
+            print(results[1].identifier + " -- " + String(results[1].confidence))
         })
         
         let bgQueue = DispatchQueue(label: "queue.serial.classificationRequestHandler")

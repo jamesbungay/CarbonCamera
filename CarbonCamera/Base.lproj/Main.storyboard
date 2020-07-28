@@ -79,13 +79,6 @@
                                     <action selector="shutterButtonTouchUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ybm-dK-FiM"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Classification Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Aq-Ob-6e2">
-                                <rect key="frame" x="50" y="54" width="314" height="21.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="JIw-xf-5a9" userLabel="Info Panel Stack View">
                                 <rect key="frame" x="0.0" y="532" width="414" height="320"/>
                                 <subviews>
@@ -133,7 +126,7 @@
                                                         <color key="textColor" red="0.29803921570000003" green="0.3294117647" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kg CO2e per kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bN-ax-s8B">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kg CO2e per kg" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bN-ax-s8B">
                                                         <rect key="frame" x="94.5" y="79" width="234" height="40.5"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="34"/>
                                                         <color key="textColor" red="0.29803921570000003" green="0.3294117647" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -366,29 +359,24 @@
                             <constraint firstItem="JIw-xf-5a9" firstAttribute="top" secondItem="SYW-N7-Rc1" secondAttribute="bottom" priority="750" constant="25" id="6Cc-fS-94z"/>
                             <constraint firstItem="JIw-xf-5a9" firstAttribute="top" secondItem="1LT-zQ-YH3" secondAttribute="bottom" priority="750" constant="10" id="78Q-p2-f7B"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SYW-N7-Rc1" secondAttribute="bottom" constant="25" id="8wl-Uo-GQ7"/>
-                            <constraint firstItem="1Aq-Ob-6e2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="IIB-Zb-EhN"/>
                             <constraint firstItem="E3L-zd-Qbi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LeD-Ls-1pd"/>
                             <constraint firstAttribute="trailing" secondItem="E3L-zd-Qbi" secondAttribute="trailing" id="MfU-IN-lX7"/>
                             <constraint firstItem="JIw-xf-5a9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Rna-Ye-iYM"/>
                             <constraint firstItem="SYW-N7-Rc1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Tev-oX-SjD"/>
-                            <constraint firstItem="1Aq-Ob-6e2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Tsf-cx-V6K"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="JIw-xf-5a9" secondAttribute="bottom" constant="10" id="UhC-Ok-AfP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1LT-zQ-YH3" secondAttribute="bottom" constant="10" id="XPd-EJ-jno"/>
                             <constraint firstItem="1LT-zQ-YH3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eRw-xl-pkI"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1Aq-Ob-6e2" secondAttribute="trailing" constant="50" id="fCe-JP-ipl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Kf8-1e-Zhk" secondAttribute="bottom" constant="25" id="fZl-Pw-I4n"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JIw-xf-5a9" secondAttribute="trailing" id="fub-E2-LCs"/>
                             <constraint firstItem="E3L-zd-Qbi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="g70-cm-dZ8"/>
                             <constraint firstItem="JIw-xf-5a9" firstAttribute="top" secondItem="Kf8-1e-Zhk" secondAttribute="bottom" priority="750" constant="25" id="r8b-eo-eqZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kf8-1e-Zhk" secondAttribute="trailing" constant="20" id="rxv-4a-RQI"/>
                             <constraint firstAttribute="bottom" secondItem="E3L-zd-Qbi" secondAttribute="bottom" id="wjh-ZM-sst"/>
-                            <constraint firstItem="1Aq-Ob-6e2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="xjv-nI-NoX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="cameraPreviewView" destination="E3L-zd-Qbi" id="945-yB-7hu"/>
-                        <outlet property="classificationResultLabel" destination="1Aq-Ob-6e2" id="yxt-lE-fWJ"/>
                         <outlet property="foodInfoCO2ePerKgLabel" destination="Z1X-59-qT0" id="viC-vz-bxI"/>
                         <outlet property="foodInfoCO2ePerPortionDescLabel" destination="0sM-h0-Ew9" id="Suk-J2-1hy"/>
                         <outlet property="foodInfoCO2ePerPortionLabel" destination="QJm-Vg-iZt" id="RAu-A0-EB6"/>
