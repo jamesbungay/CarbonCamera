@@ -14,7 +14,9 @@ import Vision  // Vision module of CoreML
 // TODO: Remove classification output from top of screen
 
 // TODO: DONE - Show first classified food as suggestion button 0
-// TODO: ...with highlighted edge to indicate that it is the current show food
+// TODO: DONE - ...with highlighted edge to indicate that it is the current show food
+
+// TODO: Maybe change green button colour to green shadow instead
 
 // TODO: Spinning loading symbol on shutter button between clicking and classification complete
 
@@ -268,12 +270,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             
             self.handleResultsOfClassification(results: results)
             
-            //TODO: remove
-            // Display result of classification in UI; do work on main thread
-            DispatchQueue.main.async {
-                self.classificationResultLabel.text = String(results[0].identifier + " -- " + String(results[0].confidence))
-                self.classificationResultLabel.text! += String("\n" + results[1].identifier + " -- " + String(results[1].confidence))
-            }
+            // Display result of classification in UI for testing purposes; do work on main thread:
+            
+//            DispatchQueue.main.async {
+//                self.classificationResultLabel.text = String(results[0].identifier + " -- " + String(results[0].confidence))
+//                self.classificationResultLabel.text! += String("\n" + results[1].identifier + " -- " + String(results[1].confidence))
+//            }
         })
         
         let bgQueue = DispatchQueue(label: "queue.serial.classificationRequestHandler")
