@@ -25,6 +25,8 @@ import Vision  // Vision module of CoreML
 
 // TODO: DONE - Scroll suggestion buttons back to left when closing
 
+// TODO: Replace shutter button with 'calorie mama' like button
+
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
@@ -33,6 +35,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var foodListButton: UIButton!
     @IBOutlet weak var torchButton: UIButton!
     @IBOutlet weak var shutterButton: UIButton!
+    @IBOutlet weak var infoPanelCloseButton: UIButton!
     
     @IBOutlet weak var foodInfoTitleLabel: UILabel!
     @IBOutlet weak var foodInfoCO2ePerKgLabel: UILabel!
@@ -43,17 +46,22 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     @IBOutlet weak var scrollViewForSuggestionButtons: UIScrollView!
     
-    @IBOutlet weak var suggestionButton0: FoodButton!
-    @IBOutlet weak var suggestionButton1: FoodButton!
-    @IBOutlet weak var suggestionButton2: FoodButton!
-    @IBOutlet weak var suggestionButton3: FoodButton!
-    @IBOutlet weak var suggestionButton4: FoodButton!
-    @IBOutlet weak var suggestionButton5: FoodButton!
+    @IBOutlet var suggestionButtons: [FoodButton]!
     
     @IBOutlet weak var classificationResultLabel: UILabel!
     
     @IBOutlet weak var infoPanelStackViewBottomConstraint: NSLayoutConstraint!
     
+    
+    // Colours which are used throughout the UI:
+    
+    let colourHighlightBg = UIColor(red: 139/255, green: 206/255, blue: 123/255, alpha: 1)
+    let colourBg = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+    let colourHighlightText = UIColor(red: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+    let colourText = UIColor(red: 76/255, green: 84/255, blue: 100/255, alpha: 1)
+    
+    
+    // Other variables in scope of whole class:
     
     let foodDataModel = FoodDataModel(resourceNameOfCsvToUse: "foodCarbonDataSet")
     
@@ -68,9 +76,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     var currentFoodInfoShown: Int = -1  // Keeps track of which food suggestion is shown, out of the 6 foods whose buttons can be clicked to see their CO2e info when a photo is taken
     
+    var suggestionButtonsCount: Int = -1  // Number of food suggestion buttons to be displayed below the food info view
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set info panel to initially be off screen, before a photo has been taken:
         
         self.infoPanelStackViewBottomConstraint.constant = -400
         self.view.layoutIfNeeded()
@@ -81,12 +93,51 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             self.setUpCaptureSession()
         }
         
-        suggestionButton0.suggestionButtonID = 0
-        suggestionButton1.suggestionButtonID = 1
-        suggestionButton2.suggestionButtonID = 2
-        suggestionButton3.suggestionButtonID = 3
-        suggestionButton4.suggestionButtonID = 4
-        suggestionButton5.suggestionButtonID = 5
+        // Initialise suggestion buttons with an identifying number and draw shadow around each one:
+        
+        suggestionButtonsCount = suggestionButtons.count
+        for i in 0...(suggestionButtonsCount - 1) {
+            
+            suggestionButtons[i].suggestionButtonID = i
+            
+            suggestionButtons[i].layer.shadowPath = UIBezierPath(roundedRect: suggestionButtons[i].bounds, cornerRadius: suggestionButtons[i].layer.cornerRadius).cgPath
+            suggestionButtons[i].layer.shadowRadius = 2
+            suggestionButtons[i].layer.shadowOffset = .zero
+            suggestionButtons[i].layer.shadowColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
+            suggestionButtons[i].layer.shadowOpacity = 0.6
+        }
+        
+        // Draw shadow around food info panel and other UI buttons:
+        
+        foodInfoView.layer.shadowPath = UIBezierPath(rect: foodInfoView.bounds).cgPath
+        foodInfoView.layer.shadowRadius = 3
+        foodInfoView.layer.shadowOffset = .zero
+        foodInfoView.layer.shadowColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
+        foodInfoView.layer.shadowOpacity = 0.6
+        
+        infoPanelCloseButton.layer.shadowPath = UIBezierPath(roundedRect: infoPanelCloseButton.bounds, cornerRadius: infoPanelCloseButton.layer.cornerRadius).cgPath
+        infoPanelCloseButton.layer.shadowRadius = 3
+        infoPanelCloseButton.layer.shadowOffset = .zero
+        infoPanelCloseButton.layer.shadowColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
+        infoPanelCloseButton.layer.shadowOpacity = 0.6
+        
+        torchButton.layer.shadowPath = UIBezierPath(roundedRect: torchButton.bounds, cornerRadius: torchButton.layer.cornerRadius).cgPath
+        torchButton.layer.shadowRadius = 3
+        torchButton.layer.shadowOffset = .zero
+        torchButton.layer.shadowColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
+        torchButton.layer.shadowOpacity = 0.6
+        
+        foodListButton.layer.shadowPath = UIBezierPath(roundedRect: foodListButton.bounds, cornerRadius: foodListButton.layer.cornerRadius).cgPath
+        foodListButton.layer.shadowRadius = 3
+        foodListButton.layer.shadowOffset = .zero
+        foodListButton.layer.shadowColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
+        foodListButton.layer.shadowOpacity = 0.6
+        
+        shutterButton.layer.shadowPath = UIBezierPath(roundedRect: shutterButton.bounds, cornerRadius: shutterButton.layer.cornerRadius).cgPath
+        shutterButton.layer.shadowRadius = 3
+        shutterButton.layer.shadowOffset = .zero
+        shutterButton.layer.shadowColor = CGColor(srgbRed: 0, green: 0, blue: 0, alpha: 1)
+        shutterButton.layer.shadowOpacity = 0.6
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -235,15 +286,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     func handleResultsOfClassification(results: [VNClassificationObservation]) {
         
-        // Get foodIDs of top 6 classification results that are foods, still working off main queue/thread to prevent the UI from hanging:
+        // Get foodIDs of top n (default 6) classification results that are foods, still working off main queue/thread to prevent the UI from hanging:
         
-        var top6FoodIDs: [Int] = []
-        var foodIDsLeftToObtain = 6
+        var topFoodIDs: [Int] = []
+        var foodIDsLeftToObtain = suggestionButtonsCount
         var count = 0
         while foodIDsLeftToObtain > 0 {
             guard let returnedFoodID = foodDataModel.getFoodIDOf(classificationIdentifier: results[count].identifier)
                 else { count += 1; continue }
-            top6FoodIDs.append(returnedFoodID)
+            topFoodIDs.append(returnedFoodID)
             foodIDsLeftToObtain -= 1
             count += 1
         }
@@ -252,8 +303,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         DispatchQueue.main.async {
             
-            self.setUpFoodInfoView(foodID: top6FoodIDs[0])
-            self.setUpFoodSuggestionsView(foodID: top6FoodIDs)
+            self.setUpFoodInfoView(foodID: topFoodIDs[0])
+            self.setUpFoodSuggestionsView(foodID: topFoodIDs)
             
             // Display info panel on screen:
             UIView.animate(withDuration: 0.4, delay: 0, options: [.curveEaseInOut], animations: { self.infoPanelStackViewBottomConstraint.constant = 10; self.shutterButton.alpha = 0; self.torchButton.alpha = 0; self.foodListButton.alpha = 0; self.view.layoutIfNeeded() }, completion: nil)
@@ -291,21 +342,20 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     func setUpFoodSuggestionsView(foodID: [Int]) {
 
-        suggestionButton0.foodID = foodID[0]
-        suggestionButton0.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[0]) ?? "", for: .normal)
-        suggestionButton1.foodID = foodID[1]
-        suggestionButton1.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[1]) ?? "", for: .normal)
-        suggestionButton2.foodID = foodID[2]
-        suggestionButton2.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[2]) ?? "", for: .normal)
-        suggestionButton3.foodID = foodID[3]
-        suggestionButton3.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[3]) ?? "", for: .normal)
-        suggestionButton4.foodID = foodID[4]
-        suggestionButton4.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[4]) ?? "", for: .normal)
-        suggestionButton5.foodID = foodID[5]
-        suggestionButton5.setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[5]) ?? "", for: .normal)
+        for i in 0...(suggestionButtonsCount - 1) {
+            
+            suggestionButtons[i].foodID = foodID[i]
+            suggestionButtons[i].setTitle(foodDataModel.getNameFromFoodID(foodID: foodID[i]) ?? "", for: .normal)
+            
+            suggestionButtons[i].backgroundColor = colourBg
+            suggestionButtons[i].setTitleColor(colourText, for: .normal)
+        }
+
+        suggestionButtons[0].backgroundColor = colourHighlightBg
+        suggestionButtons[0].setTitleColor(colourHighlightText, for: .normal)
+        
         currentFoodInfoShown = 0
         scrollViewForSuggestionButtons.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
-        
     }
     
     
@@ -345,10 +395,31 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     // Handles touch-up event for all six suggestionButtons:
     @IBAction func suggestionButtonTouchUp(_ sender: Any) {
         
+        // Cast sender object as FoodButton:
+        
         let senderButton = sender as! FoodButton
         if currentFoodInfoShown == senderButton.suggestionButtonID { return }
+        
+        // Display food info for corresponding food of the tapped button:
+        
         currentFoodInfoShown = senderButton.suggestionButtonID
         setUpFoodInfoView(foodID: senderButton.foodID)
+        
+        // Reset colouring of all suggestion buttons to default, and colour tapped suggestion button with highlight colours to indicate it was tapped:
+        
+        for i in 0...(suggestionButtonsCount - 1) {
+            
+            suggestionButtons[i].backgroundColor = colourBg
+            suggestionButtons[i].setTitleColor(colourText, for: .normal)
+            
+            if suggestionButtons[i].suggestionButtonID == senderButton.suggestionButtonID {
+                suggestionButtons[i].backgroundColor = colourHighlightBg
+                suggestionButtons[i].setTitleColor(colourHighlightText, for: .normal)
+            }
+        }
+        
+        // Animate the food info panel to flip:
+        
         UIView.transition(with: self.foodInfoView, duration: 0.3, options: [.transitionFlipFromLeft], animations: nil, completion: nil)
     }
     
