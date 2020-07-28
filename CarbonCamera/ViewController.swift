@@ -17,7 +17,7 @@ import Vision  // Vision module of CoreML
 // TODO: DONE - ...with highlighted edge to indicate that it is the current show food
 
 // TODO: Maybe - change green button colour to green shadow instead
-// TODO: Add shadow to white text on green background
+// TODO: Maybe - Add shadow to white text on green background
 
 // TODO: Spinning loading symbol on shutter button between clicking and classification complete
 
@@ -66,7 +66,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     let foodDataModel = FoodDataModel(resourceNameOfCsvToUse: "foodCarbonDataSet")
     
-    var deviceHasTorch: Bool = false
+    var flashEnabled = false  // Indicates whether flash should be used when taking a photo, toggled by a UI button
     
     let captureSession = AVCaptureSession()
     
@@ -169,7 +169,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         guard let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back)
             else { return }  // Configuration failed, no back camera.
         
-        self.deviceHasTorch = videoDevice.hasTorch
         
         guard let videoDeviceInput = try? AVCaptureDeviceInput(device: videoDevice)
             else { return }  // Configuration failed, cannot use back camera as capture input device.
@@ -209,30 +208,33 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     // MARK: Torch Toggle Method
     
-    func toggleTorch() {
+    func toggleTorch(turnOn: Bool) -> Bool {
         guard let videoDevice = AVCaptureDevice.default(for: .video)
-            else { return }
+            else { return false }
         
         guard videoDevice.hasTorch, videoDevice.isTorchAvailable
-            else { return }
+            else { return false }
         
-        if videoDevice.torchMode != .on {  // Turn on torch and configure button to show this:
+        // Turn on torch:
+        if turnOn {  // videoDevice.torchMode != .on {
             do {
                 try videoDevice.lockForConfiguration()
                 videoDevice.torchMode = .on
                 torchButton.setImage(UIImage(systemName: "lightbulb"), for: UIControl.State.normal)
-            } catch { return }  // Video device could not be reconfigured to turn on torch.
-            
-        } else {  // Turn off torch and configure button to show this:
+            } catch { return false }  // Video device could not be reconfigured to turn on torch.
+            flashEnabled = true
+        } else {  // Turn off torch:
             do {
                 try videoDevice.lockForConfiguration()
                 videoDevice.torchMode = .off
                 torchButton.setImage(UIImage(systemName: "lightbulb.slash"), for: UIControl.State.normal)
-            } catch { return }  // Video device could not be reconfigured to turn off torch.
+            } catch { return false }  // Video device could not be reconfigured to turn off torch.
+            flashEnabled = false
         }
         
         videoDevice.unlockForConfiguration()  // Allow other apps to reconfigure video device.
-
+        
+        return true
     }
     
     
@@ -249,6 +251,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             else { return }
         
         classifyImageAndPassResultsToHandler(imageBufferIn: imageBuffer)
+        
+        if flashEnabled {
+            DispatchQueue.main.async {
+                let _ = self.toggleTorch(turnOn: false)
+            }
+        }
     }
     
     
@@ -371,7 +379,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     
     @IBAction func torchButtonTapped(_ sender: Any) {
-        toggleTorch()
+        
+        if !self.readyToCaptureAndProcessImage { return }
+        
+        if flashEnabled {
+            let _ = toggleTorch(turnOn: false)
+        } else {
+            let _ = toggleTorch(turnOn: true)
+        }
     }
     
     
