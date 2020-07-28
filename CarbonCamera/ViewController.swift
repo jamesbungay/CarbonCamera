@@ -23,8 +23,8 @@ import Vision  // Vision module of CoreML
 
 // TODO: Improve food info view ui arrangement
 
-// TODO: Only have torch on when taking photo
-// TODO: Reset torch button image when app comes back into view after being suspended
+// TODO: DONE IN A WAY - Only have torch on when taking photo
+// TODO: NO - Reset torch button image when app comes back into view after being suspended
 
 // TODO: DONE - Scroll suggestion buttons back to left when closing
 
