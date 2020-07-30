@@ -11,22 +11,10 @@ import AVFoundation
 import Vision  // Vision module of CoreML
 
 
-// TODO: DONE - Remove classification output from top of screen
-
-// TODO: DONE - Show first classified food as suggestion button 0
-// TODO: DONE - ...with highlighted edge to indicate that it is the current show food
-
 // TODO: Maybe - change green button colour to green shadow instead
 // TODO: Maybe - Add shadow to white text on green background
 
-// TODO: Spinning loading symbol on shutter button between clicking and classification complete
-
-// TODO: Improve food info view ui arrangement
-
-// TODO: DONE IN A WAY - Only have torch on when taking photo
-// TODO: NO - Reset torch button image when app comes back into view after being suspended
-
-// TODO: DONE - Scroll suggestion buttons back to left when closing
+// TODO: NO - Spinning loading symbol on shutter button between clicking and classification complete
 
 // TODO: Maybe - Replace shutter button with 'calorie mama' like button
 
