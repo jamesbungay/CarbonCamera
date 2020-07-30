@@ -343,7 +343,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         foodInfoTitleLabel.text = title
         foodInfoCO2ePerKgLabel.text = co2ePerKg
         foodInfoCO2ePerPortionLabel.text = co2ePerPortion
-        foodInfoCO2ePerPortionDescLabel.text = "kg CO2e per " + co2ePerPortionDesc
+        foodInfoCO2ePerPortionDescLabel.text = "in each " + co2ePerPortionDesc
     }
     
     
