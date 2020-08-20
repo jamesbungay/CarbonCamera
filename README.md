@@ -4,7 +4,9 @@ CarbonCamera is an iOS app which shows the carbon footprint of food or drinks, d
 
 Take a photo of your snack or meal and compare its carbon emissions to other suggested foods.
 
----
+<img src="Screenshots/screenshot_1.png" width="200"> <img src="Screenshots/screenshot_2.png" width="200">
+
+### ☘️ App features ☘️
 
 * Custom camera interface integrated into the app, cut down to only include the required features (rear-camera & flash control) and provide an easier-to-use app
 * Food and drinks in captured photos are classified using a pretrained version of the ResNet50 neural network, implemented using Apple's Core ML library
